@@ -1,5 +1,4 @@
 
-
 use std::fs;
 use std::path::Path;
 use async_std::sync::channel;
@@ -7,6 +6,11 @@ use async_std::task;
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
+/*
+    this area of the program is responsible for
+    managing video files and keeping track of the current 
+    video being played by PexelPaper
+*/
 
 pub struct VideoHandler{
     pub root: String,
@@ -21,8 +25,10 @@ impl VideoHandler{
             current_video: current_video
         }
     }
-    
-    async fn listen_for_current_video_changes(&self) {
+
+    //basicially an event listener on the current video variable 
+    //thatll let me dynamically load video data
+    async fn listen_for_current_video_changes(&self) { 
         let (sender, receiver) = channel(1); // Create a channel with a buffer of 1
 
         let data = Arc::clone(&self.current_video);
@@ -34,7 +40,7 @@ impl VideoHandler{
                     let mut video_path_guard = current_video.lock().await;
                     if *video_path_guard != previous_video_path{
                         // Check if the data has changed
-                        previous_value = data_guard.clone(); // update previous value
+                        previous_video_path = video_path_guard.clone(); // update previous value
                         sender.send(()).await.expect("Send failed");
                     }
                 }
@@ -52,14 +58,11 @@ impl VideoHandler{
         path.exists() && path.is_file()
     }
 
-    pub fn check_video_defined(video_path: &str) -> bool{ 
-            true; 
-    }
     pub fn change_root(new_root: &str) { //returns void
         self.root = new_root;
     }
     
-    pub fn change_current_video(video_selection: &str) { //return void
-        self.current_video = video_selection;
+    pub fn change_current_video(new_selection: &str) { //return void
+        self.current_video = new_selection;
     }
 }
