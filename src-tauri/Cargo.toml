@@ -1,12 +1,12 @@
 [package]
 name = "app"
 version = "0.1.0"
-description = "A Tauri App"
+description = "Free dynamic wallpaper application using the plex api"
 authors = ["you"]
 license = ""
 repository = ""
 default-run = "app"
-edition = "2021"
+edition = "2018"
 rust-version = "1.72.1"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
