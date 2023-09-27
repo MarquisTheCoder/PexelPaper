@@ -21,6 +21,7 @@ impl VideoHandler{
 
     pub fn new(root: &str, current_video: &str) -> Self{
         Self {
+
             root: root,
             current_video: current_video
         }
@@ -65,4 +66,5 @@ impl VideoHandler{
     pub fn change_current_video(new_selection: &str) { //return void
         self.current_video = new_selection;
     }
+
 }
