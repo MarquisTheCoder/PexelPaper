@@ -14,7 +14,7 @@ use std::time::Duration;
 
 pub struct VideoHandler{
     pub root: String,
-    pub current_video: Arc<Mutex<String>>,
+    pub current_video: Arc<Mutex<&str>>,
 }
 
 impl VideoHandler{ 
@@ -37,7 +37,7 @@ impl VideoHandler{
         task::spawn(async move {
             loop {
                 {
-                    let mut video_path_guard = current_video.lock().await;
+                    let mut video_path_guard = self.current_video.lock().await;
                     if *video_path_guard != previous_video_path{
                         // Check if the data has changed
                         previous_video_path = video_path_guard.clone(); // update previous value
@@ -58,11 +58,11 @@ impl VideoHandler{
         path.exists() && path.is_file()
     }
 
-    pub fn change_root(new_root: &str) { //returns void
+    pub fn change_root(&self, new_root: &str) { //returns void
         self.root = new_root;
     }
     
-    pub fn change_current_video(new_selection: &str) { //return void
+    pub fn change_current_video(&self, new_selection: &str) { //return void
         self.current_video = new_selection;
     }
 
