@@ -11,10 +11,9 @@
     "version": "0.1.0"
   },
   "tauri": {
-    "macOSPrivateApi": true,
     "allowlist": {
       "window": {
-        "all": true, 
+        "all": false, 
         "create": true, 
         "center": true,
         "requestUserAttention": true,
@@ -91,7 +90,6 @@
     },
     "windows": [
       {
-        "transparent": true,
         "fullscreen": false,
         "height": 600,
         "resizable": true,
