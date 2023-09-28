@@ -11,7 +11,7 @@
             alt="minimize"
         />
     </div>
-    <div class="titlebar-button" id="titlebar-maximize" on:click={() => appWindow.toggleMaximize()}>
+    <div class="titlebar-button h-10" id="titlebar-maximize" on:click={() => appWindow.toggleMaximize()}>
         <img
             src="https://api.iconify.design/mdi:window-maximize.svg"
             alt="maximize"
@@ -27,7 +27,7 @@
 <style>
     .titlebar {
   height: 30px;
-  background: #329ea3;
+  background: #062c35;
   user-select: none;
   display: flex;
   justify-content: flex-end;

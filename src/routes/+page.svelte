@@ -6,3 +6,6 @@
 
 
 <Titlebar/>
+<section class="w-screen h-screen bg-black">
+    hello
+</section>
