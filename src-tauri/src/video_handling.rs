@@ -18,10 +18,9 @@ pub struct VideoHandler{
 }
 
 impl VideoHandler{ 
-
+    
     pub fn new(root: &str, current_video: &str) -> Self{
         Self {
-
             root: root,
             current_video: current_video
         }
