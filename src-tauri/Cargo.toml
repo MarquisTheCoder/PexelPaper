@@ -17,7 +17,7 @@ tauri-build = { version = "1.4.0", features = [] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
-tauri = { version = "1.4.0", features = [ "window-minimize", "window-set-cursor-grab", "window-set-max-size", "window-set-focus", "window-set-fullscreen", "window-maximize", "window-create", "window-set-ignore-cursor-events", "window-set-maximizable", "window-set-resizable", "window-set-decorations", "window-unminimize", "window-set-closable", "window-unmaximize", "window-set-size", "window-set-minimizable", "window-set-always-on-top", "window-print", "window-set-icon", "window-set-cursor-visible", "window-close", "window-set-content-protected", "window-set-title", "window-set-skip-taskbar", "window-set-position", "window-set-cursor-position", "window-start-dragging", "window-hide", "window-set-min-size", "window-set-cursor-icon", "window-show", "window-center", "window-request-user-attention"] }
+tauri = { version = "1.4.0", features = [ "macos-private-api", "window-all", "window-set-content-protected"] }
 async-std = "1.10.0"
 
 [features]

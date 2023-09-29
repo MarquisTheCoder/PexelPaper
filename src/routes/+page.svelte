@@ -1,22 +1,18 @@
 <script>
-    // import { appWindow } from '@tauri-apps/api/window'
+    // import { appWindow } from '@tauri-apps/api/window' 
+    import "../app.css";
     import Titlebar from "$lib/components/window/Titlebar.svelte"
     import Window from "$lib/components/window/Window.svelte"
-import { P } from "@tauri-apps/api/event-41a9edf5"
 </script>
 
-
-
-
+<Titlebar/>
 <Window>
-    <Titlebar/>
-    <section>
-        <p>hello</p>
-    </section>
+    
 </Window>
 
 <style>
-    section{
+    .hello{
         color: black;
+        font-size: 10rem;
     }
 </style>

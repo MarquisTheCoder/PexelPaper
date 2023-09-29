@@ -3,6 +3,7 @@
 </script>
 
 <div data-tauri-drag-region class="titlebar rounded-sm">
+
     <div role="button" tabindex="0" class="titlebar-button" id="titlebar-minimize" on:keypress on:click={() => appWindow.minimize()}>
         <img src="https://api.iconify.design/mdi:window-minimize.svg" alt="minimize" />
     </div>
@@ -14,20 +15,28 @@
     </div>
 </div>
 
-
-
 <style>
-    .titlebar {
-  height: 30px;
-  background: #062c35;
-  user-select: none;
-  display: flex;
-  justify-content: flex-end;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-}
+  img{
+    filter: invert(100%);
+    opacity: 0.6;
+  }
+  .titlebar {
+    height: 30px;
+    width: 100vw;
+    background: #00000022;
+    user-select: none;
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 10px 10px 0 0;
+    border: 1px;
+    border-color: white;
+  }
 .titlebar-button {
   display: inline-flex;
   justify-content: center;
@@ -36,6 +45,6 @@
   height: 30px;
 }
 .titlebar-button:hover {
-  background: #5bbec3;
+  background: #123335;
 }
 </style>
