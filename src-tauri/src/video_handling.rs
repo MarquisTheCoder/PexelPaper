@@ -1,5 +1,5 @@
 
-use std::fs;
+// use std::fs;
 use std::path::Path;
 use async_std::sync::channel;
 use async_std::task;
@@ -12,9 +12,9 @@ use std::time::Duration;
     video being played by PexelPaper
 */
 
-pub struct VideoHandler{
-    pub root: String,
-    pub current_video: Arc<Mutex<&str>>,
+pub struct VideoHandler<'a>{
+    pub root: &str,
+    pub current_video: Arc<Mutex<&'a str>>,
 }
 
 impl VideoHandler{ 
@@ -32,12 +32,12 @@ impl VideoHandler{
         let (sender, receiver) = channel(1); // Create a channel with a buffer of 1
 
         let data = Arc::clone(&self.current_video);
-        let mut previous_video_path= self.current_video.lock().await.clone(); 
+        let mut previous_video_path= self.current_video.lock().clone(); 
 
         task::spawn(async move {
             loop {
                 {
-                    let mut video_path_guard = self.current_video.lock().await;
+                    let mut video_path_guard = self.current_video.lock();
                     if *video_path_guard != previous_video_path{
                         // Check if the data has changed
                         previous_video_path = video_path_guard.clone(); // update previous value
@@ -49,7 +49,7 @@ impl VideoHandler{
         });
 
         while let Some(_) = receiver.recv().await {
-            println!("Video path has changed: {}", *self.current_video.lock().await);
+            println!("Video path has changed: {}", *self.current_video.lock());
         }
     } 
 
@@ -65,5 +65,9 @@ impl VideoHandler{
     pub fn change_current_video(&self, new_selection: &str) { //return void
         self.current_video = new_selection;
     }
+
+}
+
+fn main(){
 
 }
