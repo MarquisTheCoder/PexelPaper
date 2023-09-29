@@ -1,11 +1,18 @@
 use std::process::{Command};
 
+use phf::{phf_map};
+
+static COUNTRIES: phf::Map<&'static str, &'static str> = phf_map! {
+    "US" => "United States",
+    "UK" => "United Kingdom",
+};
 
 
 fn main() {
 
     let arg_current_vid: &str = ""; 
     let com_vlc: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
+     
     let full_command: &str = format!("{} --video-wallpaper {} -L", com_vlc, arg_current_vid );
 
     // Specify the command you want to run.
