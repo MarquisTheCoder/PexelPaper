@@ -13,11 +13,11 @@ use std::time::Duration;
 */
 
 pub struct VideoHandler<'a>{
-    pub root: &str,
+    pub root: &'a str,
     pub current_video: Arc<Mutex<&'a str>>,
 }
 
-impl VideoHandler{ 
+impl VideoHandler<'_>{ 
     
     pub fn new(root: &str, current_video: &str) -> Self{
         Self {
@@ -25,10 +25,10 @@ impl VideoHandler{
             current_video: current_video
         }
     }
-
     //basicially an event listener on the current video variable 
     //thatll let me dynamically load video data
     async fn listen_for_current_video_changes(&self) { 
+        
         let (sender, receiver) = channel(1); // Create a channel with a buffer of 1
 
         let data = Arc::clone(&self.current_video);
