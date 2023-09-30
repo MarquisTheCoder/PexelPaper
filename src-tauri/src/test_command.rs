@@ -1,32 +1,32 @@
 use std::process::{Command};
 
-use phf::{phf_map};
 
-static COUNTRIES: phf::Map<&'static str, &'static str> = phf_map! {
-    "US" => "United States",
-    "UK" => "United Kingdom",
-};
 
 
 fn main() {
 
-    let arg_current_vid: &str = ""; 
-    let com_vlc: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
-     
-    let full_command: &str = format!("{} --video-wallpaper {} -L", com_vlc, arg_current_vid );
+    const vlc_executable = "/Applications/VLC.app/Contents/MacOS/VLC";
+    const video_wallpaper: &str = "--video-wallpaper";
+    const no_osd: &str = "--no-osd";
+    const loop_playback: &str = "-L";
+    let video_path: &str =  "";     
 
-    // Specify the command you want to run.
-    let  mut cmd = Command::new(full_command)
-        .arg("-l")
+    let  mut run_wallpaper_in_background = Command::new(vlc_executable)
+        .arg(video_wallpaper)
+        .arg(video_path)
+        .arg(loop_playback)
+        .arg(no_osd)
         .spawn()
-        .expect("Failed to start command");
+        .expect("[-] Cannot run video in the background");
 
-    // Get the PID of the spawned process.
-    let pid = cmd.id();
+    // Get the id of the spawned process so we can kill it later.
+    let process_id = run_wallpaper_in_background.id();
 
-    println!("Spawned process with PID: {}", pid);
+    println!("Spawned process with process_id: {}", process_id);
+
 
     // You can also wait for the process to finish, if needed.
     let status = cmd.wait().expect("Failed to wait for command");
+
     println!("Command exited with: {:?}", status);
 }

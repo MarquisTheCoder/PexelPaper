@@ -1,73 +1,22 @@
 
-// use std::fs;
-use std::path::Path;
-use async_std::sync::channel;
-use async_std::task;
-use std::sync::{Arc, Mutex};
-use std::time::Duration;
+
+
+// I dont need to make this asynchronous I can just close and re run pids I over complicated the process
+//useful algorithms I may use to do this
 
 /*
-    this area of the program is responsible for
-    managing video files and keeping track of the current 
-    video being played by PexelPaper
+    Sliding Window Algorithm:
+        Use Case: When you need to maintain a window of the most recent data points (a subset of the entire data) and perform operations on that window.
+        Application: Calculate rolling statistics (e.g., rolling average, rolling sum), detect patterns or anomalies in a continuous data stream, or process recent data within a moving time window.
+        Example: If you're monitoring temperature data, you can use a sliding window to calculate the average temperature over the last hour, updating it as new temperature readings arrive.
+
+    Circular Buffers (Ring Buffers):
+        Use Case: When you want to efficiently manage and maintain a fixed-size buffer for continuously incoming data.
+        Application: Store incoming data in a circular buffer and process or retrieve the most recent data from the buffer.
+        Example: Buffering audio samples in real-time audio processing or storing incoming network packets for processing.
+
+    FIFO Queue (First-In-First-Out):
+        Use Case: When you have a continuous stream of items, and you need to process them in the order they arrived.
+        Application: Manage a queue of tasks, jobs, or requests, ensuring they are processed in the order they were received.
+        Example: Handling incoming requests in a web server, processing tasks in a task scheduler, or managing a message queue.
 */
-
-pub struct VideoHandler<'a>{
-    pub root: &'a str,
-    pub current_video: Arc<Mutex<&'a str>>,
-}
-
-impl VideoHandler<'_>{ 
-    
-    pub fn new(root: &str, current_video: &str) -> Self{
-        Self {
-            root: root,
-            current_video: current_video
-        }
-    }
-    //basicially an event listener on the current video variable 
-    //thatll let me dynamically load video data
-    async fn listen_for_current_video_changes(&self) { 
-        
-        let (sender, receiver) = channel(1); // Create a channel with a buffer of 1
-
-        let data = Arc::clone(&self.current_video);
-        let mut previous_video_path= self.current_video.lock().clone(); 
-
-        task::spawn(async move {
-            loop {
-                {
-                    let mut video_path_guard = self.current_video.lock();
-                    if *video_path_guard != previous_video_path{
-                        // Check if the data has changed
-                        previous_video_path = video_path_guard.clone(); // update previous value
-                        sender.send(()).await.expect("Send failed");
-                    }
-                }
-                task::sleep(Duration::from_secs(1)).await;
-            }
-        });
-
-        while let Some(_) = receiver.recv().await {
-            println!("Video path has changed: {}", *self.current_video.lock());
-        }
-    } 
-
-    fn check_video_exist(video_path: &str) -> bool{
-        let path = Path::new(video_path);
-        path.exists() && path.is_file()
-    }
-
-    pub fn change_root(&self, new_root: &str) { //returns void
-        self.root = new_root;
-    }
-    
-    pub fn change_current_video(&self, new_selection: &str) { //return void
-        self.current_video = new_selection;
-    }
-
-}
-
-fn main(){
-
-}
