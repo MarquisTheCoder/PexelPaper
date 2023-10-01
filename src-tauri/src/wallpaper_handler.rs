@@ -1,6 +1,7 @@
 
 mod wallpaper;
 use wallpaper::Wallpaper;
+use std::process::{Command};
 
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
@@ -9,7 +10,12 @@ pub struct WallpaperHandler<'b>{
 }
 
 impl WallpaperHandler<'_>{
-
+    
+    pub fn play(wallpaper: Wallpaper){
+        if(!wallpaper.wallpaper_path.is_none()){
+            println!("wallpaper path exist")
+        }
+    }
 }
 
 fn main(){
