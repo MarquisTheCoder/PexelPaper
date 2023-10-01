@@ -32,4 +32,8 @@ impl Wallpaper{
 
 fn main(){
     let wallpaper: Wallpaper = Wallpaper::new("path");
+    match wallpaper.get_wallpaper_path(){
+        Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
+        None => println!("Wallpaper path is empty"),
+    }
 }
