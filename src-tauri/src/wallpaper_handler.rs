@@ -1,7 +1,6 @@
 
-
-mod wallpaper::Wallpaper;
-
+mod wallpaper;
+use wallpaper::Wallpaper;
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 //useful algorithms I may use to do this
 
@@ -22,10 +21,13 @@ mod wallpaper::Wallpaper;
         Example: Handling incoming requests in a web server, processing tasks in a task scheduler, or managing a message queue.
 */
 
-pub struct WallpaperHandler<'b>{
-    current_wallpaper: &'b Wallpaper 
-}
+// pub struct WallpaperHandler<'b>{
+//     current_wallpaper: &'b Wallpaper 
+// }
 
-impl WallpaperHandler<'_>{
+// impl WallpaperHandler<'_>{
 
+
+fn main(){
+    let wallpaper: Wallpaper = Wallpaper::new("path");
 }

@@ -6,7 +6,7 @@ pub struct Wallpaper{
 
 impl Wallpaper{
 
-    fn new(path: &str) -> Self {
+    pub fn new(path: &str) -> Self {
         Wallpaper {
             wallpaper_path: Some(path.to_string()),
             wallpaper_pid: None
