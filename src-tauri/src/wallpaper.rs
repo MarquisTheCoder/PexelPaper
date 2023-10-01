@@ -1,19 +1,18 @@
 
-pub struct Wallpaper<'a>{
+pub struct Wallpaper{
     wallpaper_path: Option<String>,
     wallpaper_pid: Option<i16> 
 }
 
+impl Wallpaper{
 
-impl Wallpaper<'_>{
-
-    fn new(path: &str, pid: i16) -> Self {
+    fn new(path: &str) -> Self {
         Wallpaper {
             wallpaper_path: Some(path.to_string()),
-            wallpaper_pid: Some(pid)
+            wallpaper_pid: None
         }
     }
-    
+
     fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
     }
@@ -29,4 +28,8 @@ impl Wallpaper<'_>{
     fn set_wallpaper_id(&mut self, pid: i16){
         self.wallpaper_pid = Some(pid); 
     }
+}
+
+fn main(){
+    let wallpaper: Wallpaper = Wallpaper::new("path");
 }
