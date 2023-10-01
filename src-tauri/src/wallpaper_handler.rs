@@ -1,5 +1,6 @@
 
 
+mod wallpaper::Wallpaper;
 
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 //useful algorithms I may use to do this
@@ -20,3 +21,11 @@
         Application: Manage a queue of tasks, jobs, or requests, ensuring they are processed in the order they were received.
         Example: Handling incoming requests in a web server, processing tasks in a task scheduler, or managing a message queue.
 */
+
+pub struct WallpaperHandler<'b>{
+    current_wallpaper: &'b Wallpaper 
+}
+
+impl WallpaperHandler<'_>{
+
+}
