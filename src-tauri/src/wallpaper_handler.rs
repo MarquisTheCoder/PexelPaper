@@ -12,7 +12,7 @@ pub struct WallpaperHandler<'b>{
 impl WallpaperHandler<'_>{
     
     pub fn play(wallpaper: Wallpaper){
-        if(!wallpaper.wallpaper_path.is_none()){
+        if !wallpaper.get_wallpaper_path().is_none() {
             println!("wallpaper path exist")
         }
     }
