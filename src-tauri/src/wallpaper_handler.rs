@@ -1,6 +1,7 @@
 
 mod wallpaper;
 use wallpaper::Wallpaper;
+
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 //useful algorithms I may use to do this
 
