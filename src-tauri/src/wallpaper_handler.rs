@@ -15,7 +15,6 @@ impl WallpaperHandler<'_>{
         if !wallpaper.get_wallpaper_path().is_none() {
             match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
-                    const vlc_executable: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
                     
                     let full_path: &str = format!("/Applications/VLC.app/Contents/MacOS/ --video-wallpaper {} --no-osd -L", wallpaper_path);
 
