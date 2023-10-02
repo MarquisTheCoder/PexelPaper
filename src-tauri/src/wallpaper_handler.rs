@@ -27,7 +27,8 @@ impl WallpaperHandler<'_>{
                         .arg(no_osd)
                         .spawn()
                         .expect("[-] Cannot run video in the background"); 
-                }
+                },
+                None => println!("Wallpaper path does not exist")
             }
         }
     }
