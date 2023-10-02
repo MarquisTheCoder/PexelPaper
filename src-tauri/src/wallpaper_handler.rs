@@ -16,19 +16,14 @@ impl WallpaperHandler<'_>{
             match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
                     const vlc_executable: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
-                    const video_wallpaper_flag: &str = "--video-wallpaper";
-                    const no_osd: &str = "--no-osd";
-                    const loop_playback: &str = "-L";
-                
-                    let  mut run_wallpaper_in_background = Command::new(vlc_executable)
-                        .arg(video_wallpaper_flag)
-                        .arg(wallpaper_path)
-                        .arg(loop_playback)
-                        .arg(no_osd)
+                    
+                    let full_path: &str = format!("/Applications/VLC.app/Contents/MacOS/ --video-wallpaper {} --no-osd -L", wallpaper_path);
+
+                    let  mut run_wallpaper_in_background = Command::new(full_path)
                         .spawn()
                         .expect("[-] Cannot run video in the background"); 
                 },
-                None => println!("Wallpaper path does not exist")
+                None => println!("Wallpaper path does not exist");
             }
         }
     }
