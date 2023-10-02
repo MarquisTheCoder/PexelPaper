@@ -15,10 +15,13 @@ impl WallpaperHandler<'_>{
         if !wallpaper.get_wallpaper_path().is_none() {
             match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
-                    println!("{}", wallpaper_path); 
-                    let full_path: String = format!("/Applications/VLC.app/Contents/MacOS/VLC --video-wallpaper {} --no-osd -L", wallpaper_path);
-
-                    let  mut run_wallpaper_in_background = Command::new(full_path)
+                    println!("making sure I'm getting the correct path: {}", wallpaper_path); 
+                    
+                    let  mut run_wallpaper_in_background = Command::new("/Applications/VLC.app/Contents/MacOS/VLC")
+                        .arg("--video-wallpaper")
+                        .arg(wallpaper_path)
+                        .arg("-L")
+                        .arg("--no-osd")
                         .spawn()
                         .expect("[-] Cannot run video in the background"); 
                 },
