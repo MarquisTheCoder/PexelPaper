@@ -34,6 +34,6 @@ impl WallpaperHandler<'_>{
 }
 
 fn main(){
-    let wallpaper: Wallpaper = Wallpaper::new("path");
+    let wallpaper: Wallpaper = Wallpaper::new("/Users/coder/ScreenCaptures/screen_recording.mov");
     WallpaperHandler::play(wallpaper);
 }
