@@ -16,6 +16,10 @@ impl Wallpaper{
         }
     }
 
+    pub fn get_wallpaper_checksum_path(&self) -> String{
+        self.current_wallpaper.wallpaper_checksum_path
+    }
+
     pub fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
     }
@@ -28,7 +32,7 @@ impl Wallpaper{
         self.wallpaper_path = Some(path.to_string());
     } 
 
-    pub fn set_wallpaper_id(&mut self, pid: i16){
+    pub fn set_wallpaper_pid(&mut self, pid: i16){
         self.wallpaper_pid = Some(pid); 
     }
 }

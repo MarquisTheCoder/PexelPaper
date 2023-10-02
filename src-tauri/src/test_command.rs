@@ -18,7 +18,7 @@ fn main() {
         .arg(no_osd)
         .spawn()
         .expect("[-] Cannot run video in the background");
-
+        
     // Get the id of the spawned process so we can kill it later.
     let process_id = run_wallpaper_in_background.id();
 

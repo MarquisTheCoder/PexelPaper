@@ -11,18 +11,31 @@ pub struct WallpaperHandler<'b>{
 
 impl WallpaperHandler<'_>{
     
-    pub fn checkWallpaperExist(&self) -> bool{
-        if self.current_wallpaper.get_wallpaper_path().is_none(){
-            false
+    fn check_wallpaper_is_current(&self) -> bool{
+        match self.current_wallpaper.get_wallpaper_path(){
+            Some(wallpaper_path) => {
+                wallpaper_path == self.current_wallpaper.get_wallpaper_checksum_path()
+            }
+            None{
+                return false
+            }
         }
-        true
     }
+
+    pub fn check_wallpaper_exist(&self) -> bool{
+        if self.current_wallpaper.get_wallpaper_path().is_none(){
+            return false
+        }
+        return true
+    }
+
+
 
     pub fn updateId(&mut self, pid: i16){
         self.current_wallpaper.set_wallpaper_id(pid);
     }
     // :wpub fn updatePath(&mut self, path: &str){
-
+    
     // }
     pub fn play(&self, wallpaper: Wallpaper){
         if !wallpaper.get_wallpaper_path().is_none() {
@@ -37,9 +50,12 @@ impl WallpaperHandler<'_>{
                         .arg("-L")
                         .arg("--no-osd")
                         .spawn()
-                        .expect("[-] Cannot run video in the background"); 
+                        .expect("[-] Cannot run video in the background");
+                   
+                   //saving current vlc pid so we can close it and rerun it later
+                   wallpaper.set_wallpaper_pid(run_wallpaper_in_background.id()); 
                 },
-                
+
                 None => println!("Wallpaper path does not exist"),
                 
             }
