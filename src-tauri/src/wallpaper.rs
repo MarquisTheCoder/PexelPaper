@@ -2,7 +2,7 @@
 pub struct Wallpaper{
     wallpaper_checksum_path: String,
     wallpaper_path: Option<String>,
-    wallpaper_pid: Option<i16>,
+    wallpaper_pid: Option<u32>,
      
 }
 
@@ -11,7 +11,7 @@ impl Wallpaper{
     pub fn new(path: &str) -> Self {
         Wallpaper {
             wallpaper_path: Some(path.to_string()),
-            wallpaper_checksum_path: path.to_string()
+            wallpaper_checksum_path: path.to_string(),
             wallpaper_pid: None
         }
     }
@@ -24,7 +24,7 @@ impl Wallpaper{
         self.wallpaper_path.clone()
     }
 
-    pub fn get_wallpaper_pid(&self) -> Option<i16>{
+    pub fn get_wallpaper_pid(&self) -> Option<u32>{
         self.wallpaper_pid.clone()
     }
 
@@ -32,7 +32,7 @@ impl Wallpaper{
         self.wallpaper_path = Some(path.to_string());
     } 
 
-    pub fn set_wallpaper_pid(&mut self, pid: i16){
+    pub fn set_wallpaper_pid(&mut self, pid: u32){
         self.wallpaper_pid = Some(pid); 
     }
 }

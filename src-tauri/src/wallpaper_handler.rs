@@ -11,10 +11,10 @@ pub struct WallpaperHandler<'b>{
 
 impl WallpaperHandler<'_>{
     
-    fn check_wallpaper_is_current(&self) -> bool{
-        match self.current_wallpaper.get_wallpaper_path(){
+    fn check_wallpaper_is_current(wallpaper: Wallpaper) -> bool{
+        match self.wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) => {
-                wallpaper_path == self.current_wallpaper.get_wallpaper_checksum_path()
+                wallpaper_path == self.wallpaper.get_wallpaper_checksum_path()
             }
             None{
                 return false
@@ -31,13 +31,13 @@ impl WallpaperHandler<'_>{
 
 
 
-    pub fn updateId(&mut self, pid: i16){
-        self.current_wallpaper.set_wallpaper_id(pid);
+    pub fn updateId(&mut self, pid: u32){
+        self.current_wallpaper.set_wallpaper_pid(pid);
     }
     // :wpub fn updatePath(&mut self, path: &str){
     
     // }
-    pub fn play(&self, wallpaper: Wallpaper){
+    pub fn play(wallpaper: Wallpaper){
         if !wallpaper.get_wallpaper_path().is_none() {
             match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
