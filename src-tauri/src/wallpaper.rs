@@ -1,7 +1,9 @@
 
 pub struct Wallpaper{
+    wallpaper_checksum_path: String,
     wallpaper_path: Option<String>,
-    wallpaper_pid: Option<i16> 
+    wallpaper_pid: Option<i16>,
+     
 }
 
 impl Wallpaper{
