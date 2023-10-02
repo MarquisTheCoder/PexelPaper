@@ -13,9 +13,9 @@ impl WallpaperHandler<'_>{
     
     pub fn play(wallpaper: Wallpaper){
         if !wallpaper.get_wallpaper_path().is_none() {
-            match !wallpaper.get_wallpaper_path(){
+            match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
-                    const vlc_executable = "/Applications/VLC.app/Contents/MacOS/VLC";
+                    const vlc_executable: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
                     const video_wallpaper_flag: &str = "--video-wallpaper";
                     const no_osd: &str = "--no-osd";
                     const loop_playback: &str = "-L";
@@ -26,7 +26,7 @@ impl WallpaperHandler<'_>{
                         .arg(loop_playback)
                         .arg(no_osd)
                         .spawn()
-                        .expect("[-] Cannot run video in the background") 
+                        .expect("[-] Cannot run video in the background"); 
                 }
             }
         }
