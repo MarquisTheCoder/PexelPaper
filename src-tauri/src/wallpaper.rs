@@ -11,6 +11,7 @@ impl Wallpaper{
     pub fn new(path: &str) -> Self {
         Wallpaper {
             wallpaper_path: Some(path.to_string()),
+            wallpaper_checksum_path: path.to_string()
             wallpaper_pid: None
         }
     }
