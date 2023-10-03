@@ -15,9 +15,7 @@ impl WallpaperHandler<'_>{
     
     pub fn new(wallpaper: Wallpaperr, next_wallpapers){
         WallpaperHandler{
-            old_wallpaper: wallpaper,
-            current_wallpaper: wallpaper,
-            next_wallpapers: next_wallpapers
+            wallpapers: wallpaper,
         }
     }
 
@@ -33,14 +31,13 @@ impl WallpaperHandler<'_>{
     }
 
    
-
     pub fn update_pid(wallpaper: Wallpaper, pid: u32){
         wallpaper.set_wallpaper_pid(pid);
     }
 
     pub fn play(wallpaper: Wallpaper){
         if Self::the_wallpaper_exist(wallpaper) {
-            
+
             match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
                     println!("making sure I'm getting the correct path: {}", wallpaper_path); 
