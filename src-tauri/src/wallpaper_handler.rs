@@ -1,4 +1,5 @@
 
+ #[derive(PartialEq)]
 mod wallpaper;
 use wallpaper::Wallpaper;
 use std::process::{Command};
@@ -6,64 +7,67 @@ use std::process::{Command};
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler<'b>{
-    old_wallpaper: &'b Wallpaper,
-    current_wallpaper: &'b Wallpaper, 
-    next_wallpapers: &'b Vec<Wallpaper> 
+    current_wallpaper: Wallpaper, 
 }
 
 impl WallpaperHandler<'_>{
     
-    pub fn new(wallpaper: Wallpaperr, next_wallpapers){
+    pub fn new(wallpaper: Wallpaper){
         WallpaperHandler{
-            wallpapers: wallpaper,
+            current_wallpaper: wallpaper,
         }
     }
 
-    fn wallpaper_is_current() -> bool{
-        Self::current_wallpaper == Self::old_wallpaper
+    pub fn set_current_wallpaper(&mut self, wallpaper: Wallpaper){
+        self.current_wallpaper = wallpaper;
+    }
+    
+    pub fn get_current_wallpaper(&self){
+        self.current_wallpaper
     }
 
-    fn the_wallpaper_exist(wallpaper: Wallpaper) -> bool{
-        if wallpaper.get_wallpaper_path().is_none(){
-            return false
-        }
-        return true
-    }
+    pub fn play(&self, wallpaper: Wallpaper){
 
-   
-    pub fn update_pid(wallpaper: Wallpaper, pid: u32){
-        wallpaper.set_wallpaper_pid(pid);
-    }
-
-    pub fn play(wallpaper: Wallpaper){
-        if Self::the_wallpaper_exist(wallpaper) {
-
-            match wallpaper.get_wallpaper_path(){
-                Some(wallpaper_path) =>{
-                    println!("making sure I'm getting the correct path: {}", wallpaper_path); 
-                    
-                    let  mut run_wallpaper_in_background = Command::new("/Applications/VLC.app/Contents/MacOS/VLC")
-                        .arg("--video-wallpaper")
-                        .arg(wallpaper_path)
-                        .arg("--noaudio")
-                        .arg("-L")
-                        .arg("--no-osd")
-                        .spawn()
-                        .expect("[-] Cannot run video in the background");
-                   
-                   //saving current vlc pid so we can close it and rerun it later
-                   Self:;update_pid(wallpaper, run_wallpaper_in_background.id());
-                },
-                None => println!("Wallpaper path does not exist"), 
-            }
+        if wallpaper != self.current_wallpaper{
+            match self.current_wallpaper.get_wallpaper_pid(){
+                Some(current_wallpaper_pid) => self.kill_wallpaper(current_wallpaper_pid),
+                None => self.set_current_wallpaper(wallpaper), 
+            };
         }else{
-
+            println!("Playing the wallpaper...."); 
         }
+        
+        match wallpaper.get_wallpaper_path(){
+            Some(wallpaper_path) =>{
+                println!("making sure I'm getting the correct path: {}", wallpaper_path); 
+                
+                let  mut run_wallpaper_in_background = Command::new("/Applications/VLC.app/Contents/MacOS/VLC")
+                    .arg("--video-wallpaper")
+                    .arg(wallpaper_path)
+                    .arg("--noaudio")
+                    .arg("-L")
+                    .arg("--no-osd")
+                    .spawn()
+                    .expect("[-] Cannot run video in the background");
+                
+                //saving current vlc pid so we can close it and rerun it later
+                wallpaper.set_wallpaper_pid(run_wallpaper_in_background.id());
+            },
+            None => println!("Wallpaper path does not exist"), 
+        } 
     }
+
+    pub fn kill_wallpaper(pid: u32){
+        Command::new("kill")
+        .args("-9")
+        .arg(pid)
+        .expect("Could not kill the current process"); 
+    } 
+
 }
 
 fn main(){
     let wallpaper: Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
-    let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(wallpaper, [wallpaper]);
+    let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(wallpaper);
 
 }

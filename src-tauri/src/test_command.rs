@@ -22,6 +22,7 @@ fn main() {
     // Get the id of the spawned process so we can kill it later.
     let process_id = run_wallpaper_in_background.id();
 
+    
     println!("Spawned process with process_id: {}", process_id);
 
 
