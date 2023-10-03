@@ -10,7 +10,7 @@ pub struct WallpaperHandler<'b>{
 }
 
 impl WallpaperHandler<'_>{
-    
+
     fn check_wallpaper_is_current(wallpaper: Wallpaper) -> bool{
         match wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) => {
@@ -28,7 +28,6 @@ impl WallpaperHandler<'_>{
         }
         return true
     }
-
 
 
     pub fn updateId(&mut self, pid: u32){
