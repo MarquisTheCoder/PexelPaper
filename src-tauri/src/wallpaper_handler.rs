@@ -12,17 +12,17 @@ pub struct WallpaperHandler<'b>{
 }
 
 impl WallpaperHandler<'_>{
-
-    fn the_wallpaper_is_current(wallpaper: Wallpaper) -> bool{
-        match wallpaper.get_wallpaper_path(){
-            Some(wallpaper_path) => {
-                wallpaper_path == wallpaper.get_wallpaper_checksum_path()
-            },
-            None => {
-                println!("The wallpaper does not exist");
-                return false
-            },
+    
+    pub fn new(wallpaper: Wallpaperr, next_wallpapers){
+        WallpaperHandler{
+            old_wallpaper: wallpaper,
+            current_wallpaper: wallpaper,
+            next_wallpapers: next_wallpapers
         }
+    }
+
+    fn wallpaper_is_current() -> bool{
+        Self::current_wallpaper == Self::old_wallpaper
     }
 
     fn the_wallpaper_exist(wallpaper: Wallpaper) -> bool{
@@ -32,15 +32,15 @@ impl WallpaperHandler<'_>{
         return true
     }
 
+   
 
-    pub fn updateId(&mut self, pid: u32){
-        self.current_wallpaper.set_wallpaper_pid(pid);
+    pub fn update_pid(wallpaper: Wallpaper, pid: u32){
+        wallpaper.set_wallpaper_pid(pid);
     }
-    // :wpub fn updatePath(&mut self, path: &str){
-    
-    // }
+
     pub fn play(wallpaper: Wallpaper){
         if Self::the_wallpaper_exist(wallpaper) {
+            
             match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
                     println!("making sure I'm getting the correct path: {}", wallpaper_path); 
@@ -55,7 +55,7 @@ impl WallpaperHandler<'_>{
                         .expect("[-] Cannot run video in the background");
                    
                    //saving current vlc pid so we can close it and rerun it later
-                   wallpaper.set_wallpaper_pid(run_wallpaper_in_background.id()); 
+                   Self:;update_pid(wallpaper, run_wallpaper_in_background.id());
                 },
                 None => println!("Wallpaper path does not exist"), 
             }
@@ -67,5 +67,6 @@ impl WallpaperHandler<'_>{
 
 fn main(){
     let wallpaper: Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
-    WallpaperHandler::play(wallpaper);
+    let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(wallpaper, [wallpaper]);
+
 }
