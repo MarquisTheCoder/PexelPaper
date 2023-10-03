@@ -6,8 +6,8 @@ use std::process::{Command};
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler<'b>{
-    old_wallpaper: &'b Wallpaper
-    current_wallpaper: &'b Wallpaper 
+    old_wallpaper: &'b Wallpaper,
+    current_wallpaper: &'b Wallpaper, 
     next_wallpapers: &'b Vec<Wallpaper> 
 }
 
@@ -16,7 +16,7 @@ impl WallpaperHandler<'_>{
     fn the_wallpaper_is_current(wallpaper: Wallpaper) -> bool{
         match wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) => {
-                wallpaper_path == self.wallpaper.get_wallpaper_checksum_path()
+                wallpaper_path == wallpaper.get_wallpaper_checksum_path()
             },
             None => {
                 println!("The wallpaper does not exist");
@@ -25,7 +25,7 @@ impl WallpaperHandler<'_>{
         }
     }
 
-    pub fn the_wallpaper_exist(wallpaper: Wallpaper) -> bool{
+    fn the_wallpaper_exist(wallpaper: Wallpaper) -> bool{
         if wallpaper.get_wallpaper_path().is_none(){
             return false
         }
@@ -40,7 +40,7 @@ impl WallpaperHandler<'_>{
     
     // }
     pub fn play(wallpaper: Wallpaper){
-        if the_wallpaper_exist(wallpaper) {
+        if Self::the_wallpaper_exist(wallpaper) {
             match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
                     println!("making sure I'm getting the correct path: {}", wallpaper_path); 
