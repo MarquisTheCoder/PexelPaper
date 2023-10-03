@@ -12,13 +12,13 @@ pub struct WallpaperHandler<'b>{
 impl WallpaperHandler<'_>{
     
     fn check_wallpaper_is_current(wallpaper: Wallpaper) -> bool{
-        match self.wallpaper.get_wallpaper_path(){
+        match wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) => {
                 wallpaper_path == self.wallpaper.get_wallpaper_checksum_path()
-            }
-            None{
+            },
+            None => {
                 return false
-            }
+            },
         }
     }
 
