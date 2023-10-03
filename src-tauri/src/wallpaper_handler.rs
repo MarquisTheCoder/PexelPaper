@@ -6,24 +6,27 @@ use std::process::{Command};
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler<'b>{
+    old_wallpaper: &'b Wallpaper
     current_wallpaper: &'b Wallpaper 
+    next_wallpapers: &'b Vec<Wallpaper> 
 }
 
 impl WallpaperHandler<'_>{
 
-    fn check_wallpaper_is_current(wallpaper: Wallpaper) -> bool{
+    fn the_wallpaper_is_current(wallpaper: Wallpaper) -> bool{
         match wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) => {
                 wallpaper_path == self.wallpaper.get_wallpaper_checksum_path()
             },
             None => {
+                println!("The wallpaper does not exist");
                 return false
             },
         }
     }
 
-    pub fn check_wallpaper_exist(&self) -> bool{
-        if self.current_wallpaper.get_wallpaper_path().is_none(){
+    pub fn the_wallpaper_exist(wallpaper: Wallpaper) -> bool{
+        if wallpaper.get_wallpaper_path().is_none(){
             return false
         }
         return true
@@ -37,7 +40,7 @@ impl WallpaperHandler<'_>{
     
     // }
     pub fn play(wallpaper: Wallpaper){
-        if !wallpaper.get_wallpaper_path().is_none() {
+        if the_wallpaper_exist(wallpaper) {
             match wallpaper.get_wallpaper_path(){
                 Some(wallpaper_path) =>{
                     println!("making sure I'm getting the correct path: {}", wallpaper_path); 
@@ -54,9 +57,7 @@ impl WallpaperHandler<'_>{
                    //saving current vlc pid so we can close it and rerun it later
                    wallpaper.set_wallpaper_pid(run_wallpaper_in_background.id()); 
                 },
-
-                None => println!("Wallpaper path does not exist"),
-                
+                None => println!("Wallpaper path does not exist"), 
             }
         }else{
 

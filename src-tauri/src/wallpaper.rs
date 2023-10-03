@@ -11,14 +11,10 @@ impl Wallpaper{
     pub fn new(path: &str) -> Self {
         Wallpaper {
             wallpaper_path: Some(path.to_string()),
-            wallpaper_checksum_path: path.to_string(),
             wallpaper_pid: None
         }
     }
 
-    pub fn get_wallpaper_checksum_path(&self) -> String{
-        self.current_wallpaper.wallpaper_checksum_path
-    }
 
     pub fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
