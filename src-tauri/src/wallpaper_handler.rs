@@ -12,7 +12,7 @@ pub struct WallpaperHandler<'a >{
 
 impl<'b> WallpaperHandler<'static>{
 
-    pub fn kill_wallpaper(&self, pid: u32){
+    pub fn kill_wallpapr(&self, pid: u32){
         const kill_command: &str = "kill";
         const flag_nine: &str = "-9";
 
@@ -25,18 +25,13 @@ impl<'b> WallpaperHandler<'static>{
     
     pub fn new(wallpaper: Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
-            current_wallpaper: clone(wallpaper),
+            current_wallpaper: wallpaper.clone(),
         }
     }
 
     pub fn set_current_wallpaper(&mut self, wallpaper: Wallpaper){
         self.current_wallpaper = &wallpaper;
-    }
-    
-    // pub fn get_current_wallpaper(&self) -> &Wallpaper{
-    //     &self.current_wallpaper
-        
-    // }
+    } 
 
     pub fn play(&mut self, mut wallpaper: Wallpaper) {
         if &wallpaper != self.current_wallpaper {
