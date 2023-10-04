@@ -13,8 +13,8 @@ pub struct WallpaperHandler{
 impl WallpaperHandler{
 
     pub fn kill_wallpaper(pid: u32){
-        Command::new("kill")
-        .args("-9".chars())
+        let  mut kill =  Command::new("kill")
+        .args("-9".to_string())
         .arg("{}",pid)
         .spawn()
         .expect("Could not kill the current process"); 
