@@ -7,7 +7,7 @@ use std::process::{Command};
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler{
-    current_wallpaper: Wallpaper,
+    current_wallpaper:Wallpaper,
 }
 
 impl WallpaperHandler{
@@ -38,7 +38,7 @@ impl WallpaperHandler{
         
     }
 
-    pub fn play(&self, wallpaper: Wallpaper) {
+    pub fn play(&mut self, mut wallpaper: Wallpaper) {
         if &wallpaper != &self.current_wallpaper {
             match self.current_wallpaper.get_wallpaper_pid(){
                 Some(current_wallpaper_pid) => self.kill_wallpaper(current_wallpaper_pid),
