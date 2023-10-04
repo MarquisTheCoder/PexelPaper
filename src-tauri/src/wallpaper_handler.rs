@@ -16,9 +16,9 @@ impl WallpaperHandler{
         let kill_command: &str = "kill";
         let  mut kill =  Command::new(kill_command)
             .args("-9")
-            .arg("{}",pid)
-            .spawn()
-            .expect("Could not kill the current process"); 
+            .arg(format!("{}", pid))
+                .spawn()
+                .expect("Could not kill the current process"); 
     }
     
     pub fn new(wallpaper: Wallpaper) -> WallpaperHandler{
