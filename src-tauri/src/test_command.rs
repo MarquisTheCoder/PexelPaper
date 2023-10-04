@@ -11,13 +11,13 @@ fn main() {
     const loop_playback: &str = "-L";
     let video_path: &str =  "";     
 
-    let  mut run_wallpaper_in_background = Command::new(vlc_executable)
+    let mut run_wallpaper_in_background = Command::new(vlc_executable)
         .arg(video_wallpaper)
         .arg(video_path)
         .arg(loop_playback)
         .arg(no_osd)
-        .spawn()
-        .expect("[-] Cannot run video in the background");
+            .spawn()
+            .expect("[-] Cannot run video in the background");
         
     // Get the id of the spawned process so we can kill it later.
     let process_id = run_wallpaper_in_background.id();
