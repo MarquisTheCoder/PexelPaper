@@ -8,12 +8,12 @@ use std::process::{Command};
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler{
-    current_wallpaper: Wallpaper, 
+    current_wallpaper: Wallpaper,
 }
 
 impl WallpaperHandler{
     
-    pub fn new(wallpaper: Wallpaper){
+    pub fn new(wallpaper: Wallpaper) -> WallpaperHandler{
         WallpaperHandler{
             current_wallpaper: wallpaper,
         }
@@ -61,7 +61,8 @@ impl WallpaperHandler{
     pub fn kill_wallpaper(pid: u32){
         Command::new("kill")
         .args("-9")
-        .arg(pid)
+        .arg("{}",pid)
+        .spawn()
         .expect("Could not kill the current process"); 
     } 
 
