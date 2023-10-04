@@ -1,4 +1,5 @@
 
+#[derive(PartialEq)]
 pub struct Wallpaper{
     wallpaper_path: Option<String>,
     wallpaper_pid: Option<u32>,

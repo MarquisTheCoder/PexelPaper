@@ -1,7 +1,6 @@
 
 mod wallpaper;
 
-#[derive(PartialEq)]
 use wallpaper::Wallpaper;
 use std::process::{Command};
 
