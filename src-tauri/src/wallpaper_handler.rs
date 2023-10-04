@@ -7,7 +7,7 @@ use std::process::{Command};
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler{
-    current_wallpaper:Wallpaper,
+    current_wallpaper: &Wallpaper,
 }
 
 impl WallpaperHandler{
@@ -30,7 +30,7 @@ impl WallpaperHandler{
     }
 
     pub fn set_current_wallpaper(&mut self, wallpaper: Wallpaper){
-        &self.current_wallpaper = wallpaper;
+        self.current_wallpaper = &wallpaper;
     }
     
     pub fn get_current_wallpaper(&self) -> &Wallpaper{
