@@ -23,7 +23,7 @@ impl<'b> WallpaperHandler<'static>{
                 .expect("Could not kill the current process"); 
     }
     
-    pub fn new<'c>(wallpaper: Wallpaper) -> WallpaperHandler<'b>{
+    pub fn new(wallpaper: Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
             current_wallpaper: &wallpaper,
         }
