@@ -16,8 +16,8 @@ impl WallpaperHandler{
         const kill_command: &str = "kill";
         const flag_nine: &str = "-9";
 
-        let  mut kill =  Command::new(kill_command)
-            .args(flag_nine)
+        Command::new(kill_command)
+            .arg(flag_nine)
             .arg(format!("{}", pid))
                 .spawn()
                 .expect("Could not kill the current process"); 
@@ -33,15 +33,18 @@ impl WallpaperHandler{
         self.current_wallpaper = wallpaper;
     }
     
-    pub fn get_current_wallpaper(&self) -> Wallpaper{
-        self.current_wallpaper
+    pub fn get_current_wallpaper(&self) -> &Wallpaper{
+        &self.current_wallpaper
+        
     }
 
     pub fn play(&self, wallpaper: Wallpaper) {
         if &wallpaper != &self.current_wallpaper {
             match self.current_wallpaper.get_wallpaper_pid(){
                 Some(current_wallpaper_pid) => self.kill_wallpaper(current_wallpaper_pid),
-                None => self.set_current_wallpaper(wallpaper), 
+                None => { 
+                    self.set_current_wallpaper(wallpaper);
+                }, 
             };
         }else{
             println!("Playing the wallpaper...."); 
@@ -50,7 +53,7 @@ impl WallpaperHandler{
             Some(wallpaper_path) =>{
                 println!("making sure I'm getting the correct path: {}", wallpaper_path); 
                 
-                let  mut run_wallpaper_in_background = Command::new("/Applications/VLC.app/Contents/MacOS/VLC")
+                let run_wallpaper_in_background = Command::new("/Applications/VLC.app/Contents/MacOS/VLC")
                     .arg("--video-wallpaper")
                     .arg(wallpaper_path)
                     .arg("--noaudio")
@@ -60,7 +63,7 @@ impl WallpaperHandler{
                     .expect("[-] Cannot run video in the background");
                 
                 //saving current vlc pid so we can close it and rerun it later
-                wallpaper.set_wallpaper_pid(run_wallpaper_in_background.id());
+                &wallpaper.set_wallpaper_pid(run_wallpaper_in_background.id());
             },
             None => println!("Wallpaper path does not exist"), 
         } 
