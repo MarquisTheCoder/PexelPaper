@@ -1,16 +1,17 @@
 
- #[derive(PartialEq)]
 mod wallpaper;
+
+#[derive(PartialEq)]
 use wallpaper::Wallpaper;
 use std::process::{Command};
 
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
-pub struct WallpaperHandler<'b>{
+pub struct WallpaperHandler{
     current_wallpaper: Wallpaper, 
 }
 
-impl WallpaperHandler<'_>{
+impl WallpaperHandler{
     
     pub fn new(wallpaper: Wallpaper){
         WallpaperHandler{
