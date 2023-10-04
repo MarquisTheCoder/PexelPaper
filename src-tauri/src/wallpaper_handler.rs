@@ -31,7 +31,7 @@ impl WallpaperHandler{
         self.current_wallpaper = wallpaper;
     }
     
-    pub fn get_current_wallpaper(&self){
+    pub fn get_current_wallpaper(&self) -> Wallpaper{
         self.current_wallpaper
     }
 
