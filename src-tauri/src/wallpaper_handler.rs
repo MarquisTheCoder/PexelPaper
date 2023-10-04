@@ -12,7 +12,7 @@ pub struct WallpaperHandler{
 
 impl WallpaperHandler{
 
-    pub fn kill_wallpaper(pid: u32){
+    pub fn kill_wallpaper(&self, pid: u32){
         let kill_command: &str = "kill";
         let  mut kill =  Command::new(kill_command)
             .args("-9")
