@@ -36,7 +36,7 @@ impl WallpaperHandler{
     }
 
     pub fn play(&self, wallpaper: Wallpaper) {
-        if wallpaper != self.current_wallpaper {
+        if &wallpaper != &self.current_wallpaper {
             match self.current_wallpaper.get_wallpaper_pid(){
                 Some(current_wallpaper_pid) => self.kill_wallpaper(current_wallpaper_pid),
                 None => self.set_current_wallpaper(wallpaper), 
