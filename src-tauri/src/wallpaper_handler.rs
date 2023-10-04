@@ -25,7 +25,7 @@ impl<'b> WallpaperHandler<'static>{
     
     pub fn new(wallpaper: Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
-            current_wallpaper: &wallpaper,
+            current_wallpaper: clone(wallpaper),
         }
     }
 
