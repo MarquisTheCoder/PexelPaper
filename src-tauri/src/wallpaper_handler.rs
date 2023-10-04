@@ -11,6 +11,14 @@ pub struct WallpaperHandler{
 }
 
 impl WallpaperHandler{
+
+    pub fn kill_wallpaper(pid: u32){
+        Command::new("kill")
+        .args("-9".chars())
+        .arg("{}",pid)
+        .spawn()
+        .expect("Could not kill the current process"); 
+    }
     
     pub fn new(wallpaper: Wallpaper) -> WallpaperHandler{
         WallpaperHandler{
@@ -57,13 +65,7 @@ impl WallpaperHandler{
         } 
     }
 
-    pub fn kill_wallpaper(pid: u32){
-        Command::new("kill")
-        .args("-9")
-        .arg("{}",pid)
-        .spawn()
-        .expect("Could not kill the current process"); 
-    } 
+    
 
 }
 
