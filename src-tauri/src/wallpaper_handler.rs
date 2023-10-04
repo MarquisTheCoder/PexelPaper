@@ -10,7 +10,7 @@ pub struct WallpaperHandler<'a >{
     current_wallpaper: &'a Wallpaper,
 }
 
-impl WallpaperHandler<'static>{
+impl<'b> WallpaperHandler<'static>{
 
     pub fn kill_wallpaper(&self, pid: u32){
         const kill_command: &str = "kill";
@@ -23,7 +23,7 @@ impl WallpaperHandler<'static>{
                 .expect("Could not kill the current process"); 
     }
     
-    pub fn new(wallpaper: Wallpaper) -> WallpaperHandler<'static>{
+    pub fn new<'b>(wallpaper: Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
             current_wallpaper: &wallpaper,
         }
@@ -33,10 +33,10 @@ impl WallpaperHandler<'static>{
         self.current_wallpaper = &wallpaper;
     }
     
-    pub fn get_current_wallpaper(&self) -> &Wallpaper{
-        &self.current_wallpaper
+    // pub fn get_current_wallpaper(&self) -> &Wallpaper{
+    //     &self.current_wallpaper
         
-    }
+    // }
 
     pub fn play(&mut self, mut wallpaper: Wallpaper) {
         if &wallpaper != self.current_wallpaper {
