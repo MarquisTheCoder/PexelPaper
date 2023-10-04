@@ -30,7 +30,7 @@ impl WallpaperHandler{
     }
 
     pub fn set_current_wallpaper(&mut self, wallpaper: Wallpaper){
-        self.current_wallpaper = wallpaper;
+        &self.current_wallpaper = wallpaper;
     }
     
     pub fn get_current_wallpaper(&self) -> &Wallpaper{
@@ -43,13 +43,13 @@ impl WallpaperHandler{
             match self.current_wallpaper.get_wallpaper_pid(){
                 Some(current_wallpaper_pid) => self.kill_wallpaper(current_wallpaper_pid),
                 None => { 
-                    self.set_current_wallpaper(wallpaper);
+                    &self.set_current_wallpaper(wallpaper);
                 }, 
             };
         }else{
             println!("Playing the wallpaper...."); 
         }
-        match wallpaper.get_wallpaper_path(){
+        match &wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) =>{
                 println!("making sure I'm getting the correct path: {}", wallpaper_path); 
                 
