@@ -4,7 +4,6 @@ use std::process::{Command};
 
 
 fn main() {
-
     const vlc_executable = "/Applications/VLC.app/Contents/MacOS/VLC";
     const video_wallpaper: &str = "--video-wallpaper";
     const no_osd: &str = "--no-osd";
