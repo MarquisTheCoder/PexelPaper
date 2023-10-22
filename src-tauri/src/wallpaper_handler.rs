@@ -44,7 +44,9 @@ impl<'b> WallpaperHandler<'static>{
             Some(wallpaper_pid) => {
                 copy.set_wallpaper_pid(wallpaper_pid);
             },
-            None => println!("do nothing");
+            None => {
+                println!("do nothing");
+            }
         }
         
         *self.current_wallpaper = copy;
