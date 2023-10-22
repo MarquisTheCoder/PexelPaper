@@ -35,7 +35,7 @@ impl<'b> WallpaperHandler<'static>{
         let copy = Wallpaper::new("");
         match wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) => {
-                copy.set_wallpaper_path(wallpaper_path);
+                copy.set_wallpaper_path(&wallpaper_path);
             },
             None => {
                 println!("do nothing");
