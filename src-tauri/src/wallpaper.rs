@@ -55,10 +55,11 @@ impl Wallpaper{
                     .expect("[-] Cannot run video in the background");
                 
                 //saving current vlc pid so we can close it and rerun it later
-                self.set_wallpaper_pid(run_wallpaper_in_background.id()); 
-        },
-        None => {
-            println!("cannot display wallpaper");
+                self.set_wallpaper_pid(run_wallpaper_in_background.id());
+            },
+            None => {
+                println!("cannot display wallpaper");
+            }
         }
 
     }
