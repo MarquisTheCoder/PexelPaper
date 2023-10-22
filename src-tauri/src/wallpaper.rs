@@ -94,6 +94,7 @@ fn main(){
     println!("playing the wallpaper now");
    wallpaper1.play();
    let five_seconds = time::Duration::from_millis(5000);
+   println!("waiting five seconds");
    thread::sleep(five_seconds);
    wallpaper1.kill();
 
