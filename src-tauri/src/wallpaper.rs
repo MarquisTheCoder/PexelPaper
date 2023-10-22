@@ -70,7 +70,7 @@ impl Wallpaper{
         const FLAG_NINE: &str = "-9";
 
         match self.get_wallpaper_pid(){
-            Some(wallpaper_pid){
+            Some(wallpaper_pid) => {
                 Command::new(KILL_COMMAND)
                     .arg(FLAG_NINE)
                     .arg(format!("{}", wallpaper_pid))
@@ -87,13 +87,13 @@ impl Wallpaper{
 
 fn main(){
     let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
-    match wallpaper.get_wallpaper_path(){
+    match wallpaper1.get_wallpaper_path(){
         Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
         None => println!("Wallpaper path is empty"),
     }
     println!("playing the wallpaper now");
    wallpaper1.play();
-   let five_seconds = time::Duration::from_seconds(5);
+   let five_seconds = time::Duration::from_millis(5000);
    thread::sleep(five_seconds);
    wallpaper1.kill();
 
