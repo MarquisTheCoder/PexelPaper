@@ -34,17 +34,17 @@ impl Wallpaper{
 
     pub fn play_wallpaper(mut self){
 
-        const vlc_executable: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
-        const video_wallpaper: &str = "--video-wallpaper";
-        const no_osd: &str = "--no-osd";
-        const loop_playback: &str = "-L";
+        const VLC_EXECUTABLE: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
+        const VIDEO_WALLPAPER: &str = "--video-wallpaper";
+        const NO_OSD: &str = "--no-osd";
+        const LOOP_PLAYBACK: &str = "-L";
         let video_path: &str =  "";
 
-        let mut run_wallpaper_in_background = Command::new(vlc_executable)
-            .arg(video_wallpaper)
+        const run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
+            .arg(VIDEO_WALLPAPER)
             .arg(video_path)
-            .arg(loop_playback)
-            .arg(no_osd)
+            .arg(LOOP_PLAYBACK)
+            .arg(NO_OSD)
                 .spawn()
                 .expect("[-] Cannot run video in the background");
 
@@ -52,11 +52,11 @@ impl Wallpaper{
     }
 
     pub fn kill_wallpapr(&self, pid: u32){
-        const kill_command: &str = "kill";
-        const flag_nine: &str = "-9";
+        const KILL_COMMAND: &str = "kill";
+        const FLAG_NINE: &str = "-9";
 
-        Command::new(kill_command)
-            .arg(flag_nine)
+        Command::new(KILL_COMMAND)
+            .arg(FLAG_NINE)
             .arg(format!("{}", pid))
                 .spawn()
                 .expect("Could not kill the current process");
