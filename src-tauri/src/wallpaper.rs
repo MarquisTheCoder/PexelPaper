@@ -40,7 +40,7 @@ impl Wallpaper{
         const LOOP_PLAYBACK: &str = "-L";
         let video_path: &str =  "";
 
-        const run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
+        let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
             .arg(VIDEO_WALLPAPER)
             .arg(video_path)
             .arg(LOOP_PLAYBACK)
