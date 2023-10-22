@@ -2,7 +2,6 @@
 mod wallpaper;
 
 use wallpaper::Wallpaper;
-use core::ptr::null;
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler<'a >{
@@ -11,7 +10,7 @@ pub struct WallpaperHandler<'a >{
 
 impl<'b> WallpaperHandler<'static>{
 
-    pub fn new(wallpaper: &Wallpaper) -> WallpaperHandler<'b>{:
+    pub fn new(wallpaper: &Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
             current_wallpaper: wallpaper,
         }
