@@ -35,7 +35,7 @@ impl<'b> WallpaperHandler<'static>{
         let copy = Wallpaper{
            wallpaper_path: wallpaper.wallpaper_path,
            wallpaper_pid: wallpaper.wallpaper_pid 
-        }
+        };
         self.current_wallpaper = wallpaper;
     }
 
