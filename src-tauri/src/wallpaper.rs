@@ -17,13 +17,6 @@ impl Wallpaper{
         }
     }
 
-    pub fn clone(&self) -> Wallpaper{
-        Wallpaper{
-            wallpaper_path: self.wallpaper_path,
-            wallpaper_pid: self.wallpaper_pid
-        }
-    }
-
     pub fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
     }
