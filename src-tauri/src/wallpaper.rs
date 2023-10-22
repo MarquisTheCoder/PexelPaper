@@ -34,7 +34,7 @@ impl Wallpaper{
 
     pub fn play_wallpaper(mut self){
 
-        const vlc_executable = "/Applications/VLC.app/Contents/MacOS/VLC";
+        const vlc_executable: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
         const video_wallpaper: &str = "--video-wallpaper";
         const no_osd: &str = "--no-osd";
         const loop_playback: &str = "-L";
