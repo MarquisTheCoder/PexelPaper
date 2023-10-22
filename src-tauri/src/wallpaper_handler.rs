@@ -13,7 +13,7 @@ impl<'b> WallpaperHandler<'static>{
 
     pub fn new() -> WallpaperHandler<'b>{
         WallpaperHandler{
-            current_wallpaper: null;,
+            current_wallpaper: Null,
         }
     }
 
@@ -43,5 +43,5 @@ impl<'b> WallpaperHandler<'static>{
 
 fn main(){
     let wallpaper: Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
-    let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(wallpaper);
+    // let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(wallpaper);
 }
