@@ -32,7 +32,7 @@ impl<'b> WallpaperHandler<'static>{
         if self.check_current_wallpaper_active(){
             self.kill_current_wallpaper();
         };
-        self.current_wallpaper = wallpaper;
+        self.current_wallpaper = &wallpaper;
     }
 
     pub fn run_current_wallpaper(&self){
