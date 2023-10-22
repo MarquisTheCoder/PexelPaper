@@ -37,7 +37,9 @@ impl<'b> WallpaperHandler<'static>{
             Some(wallpaper_path) => {
                 copy.set_wallpaper_path(wallpaper_path);
             },
-            None => println!("do nothing")
+            None => {
+                println!("do nothing");
+            }
         }
 
         match wallpaper.get_wallpaper_pid(){
