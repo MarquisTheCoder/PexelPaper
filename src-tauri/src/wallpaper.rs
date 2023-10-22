@@ -31,7 +31,7 @@ impl Wallpaper{
     pub fn set_wallpaper_pid(&mut self, pid: u32){
         self.wallpaper_pid = Some(pid);
     }
-    
+
     pub fn play_wallpaper(mut self){
 
         const vlc_executable = "/Applications/VLC.app/Contents/MacOS/VLC";
@@ -41,7 +41,7 @@ impl Wallpaper{
         let video_path: &str =  "";
 
         let mut run_wallpaper_in_background = Command::new(vlc_executable)
-            .arg(video_wallpaper);
+            .arg(video_wallpaper)
             .arg(video_path)
             .arg(loop_playback)
             .arg(no_osd)
