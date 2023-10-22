@@ -5,7 +5,7 @@ use wallpaper::Wallpaper;
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler<'a >{
-    pub current_wallpaper: &'a Wallpaper,
+    pub current_wallpaper: &'a mut Wallpaper,
 }
 
 impl<'b> WallpaperHandler<'static>{
@@ -32,7 +32,7 @@ impl<'b> WallpaperHandler<'static>{
         if self.check_current_wallpaper_active(){
             self.kill_current_wallpaper();
         };
-        self.current_wallpaper = &wallpaper;
+        self.current_wallpaper = wallpaper.clone();
     }
 
     pub fn run_current_wallpaper(&self){
