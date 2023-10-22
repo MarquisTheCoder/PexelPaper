@@ -11,7 +11,7 @@ pub struct WallpaperHandler<'a >{
 
 impl<'b> WallpaperHandler<'static>{
 
-    pub fn new(wallpaper: Wallpaper) -> WallpaperHandler<'b>{
+    pub fn new(wallpaper: &Wallpaper) -> WallpaperHandler<'b>{:
         WallpaperHandler{
             current_wallpaper: wallpaper,
         }
