@@ -36,7 +36,7 @@ impl<'b> WallpaperHandler<'static>{
            wallpaper_path: wallpaper.get_wallpaper_path(),
            wallpaper_pid: wallpaper.get_wallpaper_pid()
         };
-        self.current_wallpaper = wallpaper;
+        self.current_wallpaper = copy;
     }
 
     pub fn run_current_wallpaper(&mut self){
