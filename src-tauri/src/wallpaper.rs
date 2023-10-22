@@ -66,7 +66,7 @@ impl Wallpaper{
     pub fn kill_wallpapr(&self, pid: u32){
         const KILL_COMMAND: &str = "kill";
         const FLAG_NINE: &str = "-9";
-
+         
         Command::new(KILL_COMMAND)
             .arg(FLAG_NINE)
             .arg(format!("{}", pid))
