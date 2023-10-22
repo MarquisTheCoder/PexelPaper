@@ -32,7 +32,7 @@ impl<'b> WallpaperHandler<'static>{
         if self.check_current_wallpaper_active(){
             self.kill_current_wallpaper();
         };
-        let copy = Wallpaper::new("");
+        let mut copy = Wallpaper::new("");
         match wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) => {
                 copy.set_wallpaper_path(&wallpaper_path);
