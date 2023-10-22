@@ -2,8 +2,7 @@
 #[derive(PartialEq)]
 pub struct Wallpaper{
     wallpaper_path: Option<String>,
-    wallpaper_pid: Option<u32>,
-     
+    wallpaper_pid: Option<u32>, 
 }
 
 impl Wallpaper{
@@ -33,6 +32,27 @@ impl Wallpaper{
 
     pub fn set_wallpaper_pid(&mut self, pid: u32){
         self.wallpaper_pid = Some(pid); 
+    }
+    pub fn play_wallpaper(mut self){
+
+        const vlc_executable = "/Applications/VLC.app/Contents/MacOS/VLC";
+        const video_wallpaper: &str = "--video-wallpaper";
+        const no_osd: &str = "--no-osd";
+        const loop_playback: &str = "-L";
+        let video_path: &str =  "";
+
+        let mut run_wallpaper_in_background = Command::new(vlc_executable)
+            .arg(video_wallpaper)
+            .arg(video_path)
+            .arg(loop_playback)
+            .arg(no_osd)
+                .spawn()
+                .expect("[-] Cannot run video in the background");
+
+        self.set_wallpaper_pid(run_wallpaper_in_background.id());
+    }
+    pub fn stop_wallpaper(mut self){
+       let stopping_wallpaper = Command::new();
     }
 }
 
