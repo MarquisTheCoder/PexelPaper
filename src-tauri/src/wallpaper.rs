@@ -1,23 +1,19 @@
 
+use std::process::{Command};
+
 #[derive(PartialEq)]
 pub struct Wallpaper{
     wallpaper_path: Option<String>,
-    wallpaper_pid: Option<u32>, 
+    wallpaper_pid: Option<u32>,
 }
 
 impl Wallpaper{
-
     pub fn new(path: &str) -> Self {
         Wallpaper {
             wallpaper_path: Some(path.to_string()),
             wallpaper_pid: None
         }
     }
-
-    pub fn clone(&self) -> Wallpaper{
-        let clone_wallpaper = 
-    }
-
     pub fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
     }
@@ -28,10 +24,10 @@ impl Wallpaper{
 
     pub fn set_wallpaper_path(&mut self, path: &str){
         self.wallpaper_path = Some(path.to_string());
-    } 
+    }
 
     pub fn set_wallpaper_pid(&mut self, pid: u32){
-        self.wallpaper_pid = Some(pid); 
+        self.wallpaper_pid = Some(pid);
     }
     pub fn play_wallpaper(mut self){
 
@@ -42,7 +38,7 @@ impl Wallpaper{
         let video_path: &str =  "";
 
         let mut run_wallpaper_in_background = Command::new(vlc_executable)
-            .arg(video_wallpaper)
+            .arg(video_wallpaper);
             .arg(video_path)
             .arg(loop_playback)
             .arg(no_osd)
@@ -51,8 +47,16 @@ impl Wallpaper{
 
         self.set_wallpaper_pid(run_wallpaper_in_background.id());
     }
-    pub fn stop_wallpaper(mut self){
-       let stopping_wallpaper = Command::new();
+
+    pub fn kill_wallpapr(&self, pid: u32){
+        const kill_command: &str = "kill";
+        const flag_nine: &str = "-9";
+
+        Command::new(kill_command)
+            .arg(flag_nine)
+            .arg(format!("{}", pid))
+                .spawn()
+                .expect("Could not kill the current process");
     }
 }
 
