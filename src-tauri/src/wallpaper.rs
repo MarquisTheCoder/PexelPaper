@@ -1,5 +1,6 @@
 
 use std::process::{Command};
+use std::{thread, time};
 
 #[derive(PartialEq)]
 pub struct Wallpaper{
@@ -63,24 +64,37 @@ impl Wallpaper{
 
     }
 
-    pub fn kill_wallpapr(&self, pid: u32){
+    pub fn kill(&mut self){
+
         const KILL_COMMAND: &str = "kill";
         const FLAG_NINE: &str = "-9";
-         
-        Command::new(KILL_COMMAND)
-            .arg(FLAG_NINE)
-            .arg(format!("{}", pid))
-                .spawn()
-                .expect("Could not kill the current process");
+
+        match self.get_wallpaper_pid(){
+            Some(wallpaper_pid){
+                Command::new(KILL_COMMAND)
+                    .arg(FLAG_NINE)
+                    .arg(format!("{}", wallpaper_pid))
+                        .spawn()
+                        .expect("Could not kill the current process")
+            },
+            None =>{
+                prinln!("wallpaper has no PID");
+            }
+        }
+        
     }
 }
 
 fn main(){
-    let mut wallpaper: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
+    let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
     match wallpaper.get_wallpaper_path(){
         Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
         None => println!("Wallpaper path is empty"),
     }
     println!("playing the wallpaper now");
-   wallpaper.play(); 
+   wallpaper1.play();
+   let five_seconds = time::Duration::from_seconds(5);
+   thread::sleep(five_seconds);
+   wallpaper1.kill();
+
 }
