@@ -32,6 +32,10 @@ impl<'b> WallpaperHandler<'static>{
         if self.check_current_wallpaper_active(){
             self.kill_current_wallpaper();
         };
+        let copy = Wallpaper{
+           wallpaper_path: wallpaper.wallpaper_path,
+           wallpaper_pid: wallpaper.wallpaper_pid 
+        }
         self.current_wallpaper = wallpaper;
     }
 
