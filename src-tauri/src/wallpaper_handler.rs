@@ -8,9 +8,9 @@ pub struct WallpaperHandler<'a >{
     pub current_wallpaper: &'a mut Wallpaper,
 }
 
-impl WallpaperHandler<'_>{
+impl<'b> WallpaperHandler<'_>{
 
-    pub fn new(wallpaper: &'b mut Wallpaper) -> Self{
+    pub fn new<'b>(wallpaper: &'b mut Wallpaper) -> Self{
         WallpaperHandler{
             current_wallpaper: wallpaper,
         }
