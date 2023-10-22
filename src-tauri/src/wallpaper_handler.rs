@@ -13,7 +13,7 @@ impl<'b> WallpaperHandler<'static>{
 
     pub fn new() -> WallpaperHandler<'b>{
         WallpaperHandler{
-            current_wallpaper: Null,
+            current_wallpaper: null,
         }
     }
 
