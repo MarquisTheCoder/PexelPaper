@@ -93,7 +93,7 @@ fn main(){
     }
     println!("playing the wallpaper now");
    
-    while (1){
+    loop{
         wallpaper1.play();
         let five_seconds = time::Duration::from_millis(10000);
         println!("waiting five seconds");
