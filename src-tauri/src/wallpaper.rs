@@ -75,10 +75,10 @@ impl Wallpaper{
                     .arg(FLAG_NINE)
                     .arg(format!("{}", wallpaper_pid))
                         .spawn()
-                        .expect("Could not kill the current process")
+                        .expect("Could not kill the current process");
             },
             None =>{
-                prinln!("wallpaper has no PID");
+                println!("wallpaper has no PID");
             }
         }
         
