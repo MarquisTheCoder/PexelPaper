@@ -39,7 +39,6 @@ impl Wallpaper{
         const NO_AUDIO: &str = "--noaudio";
         const NO_OSD: &str = "--no-osd";
         const LOOP_PLAYBACK: &str = "-L";
-        let video_path: &str =  "";
 
         match self.get_wallpaper_path(){
             Some(wallpaper_path) =>{
