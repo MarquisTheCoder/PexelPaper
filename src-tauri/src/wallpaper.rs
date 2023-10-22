@@ -32,7 +32,7 @@ impl Wallpaper{
         self.wallpaper_pid = Some(pid);
     }
 
-    pub fn play_wallpaper(&mut self){
+    pub fn play(&mut self){
 
         const VLC_EXECUTABLE: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
         const VIDEO_WALLPAPER: &str = "--video-wallpaper";
@@ -76,9 +76,11 @@ impl Wallpaper{
 }
 
 fn main(){
-    let wallpaper: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
+    let mut wallpaper: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
     match wallpaper.get_wallpaper_path(){
         Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
         None => println!("Wallpaper path is empty"),
     }
+    println!("playing the wallpaper now");
+   wallpaper.play(); 
 }
