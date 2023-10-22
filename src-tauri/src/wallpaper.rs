@@ -76,7 +76,7 @@ impl Wallpaper{
 }
 
 fn main(){
-    let wallpaper: Wallpaper = Wallpaper::new("path");
+    let wallpaper: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
     match wallpaper.get_wallpaper_path(){
         Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
         None => println!("Wallpaper path is empty"),
