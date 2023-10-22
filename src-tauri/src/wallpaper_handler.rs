@@ -19,7 +19,7 @@ impl<'b> WallpaperHandler<'static>{
 
     fn check_current_wallpaper_active(&mut self) -> bool{
         match self.current_wallpaper.get_wallpaper_pid(){
-            Some => true,
+            Some(_empty) => true,
             None => false
         }
     }
@@ -30,7 +30,7 @@ impl<'b> WallpaperHandler<'static>{
 
     pub fn set_current_wallpaper(&mut self, wallpaper: Wallpaper){
         
-        if(self.check_current_wallpaper_active()){
+        if self.check_current_wallpaper_active(){
             self.kill_current_wallpaper();
         };
         self.current_wallpaper = &wallpaper;
