@@ -92,10 +92,12 @@ fn main(){
         None => println!("Wallpaper path is empty"),
     }
     println!("playing the wallpaper now");
-   wallpaper1.play();
-   let five_seconds = time::Duration::from_millis(10000);
-   println!("waiting five seconds");
-   thread::sleep(five_seconds);
-   wallpaper1.kill();
-
+   
+    while (1){
+        wallpaper1.play();
+        let five_seconds = time::Duration::from_millis(10000);
+        println!("waiting five seconds");
+        thread::sleep(five_seconds);
+        wallpaper1.kill();
+    }
 }
