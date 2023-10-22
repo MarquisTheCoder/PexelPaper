@@ -27,6 +27,10 @@ impl<'b> WallpaperHandler<'static>{
         self.current_wallpaper.kill();
     }
 
+    pub fn play_current_wallpaper(&mut self){
+        self.current_wallpaper.play();
+    }
+
     pub fn set_current_wallpaper(&mut self, wallpaper: & mut Wallpaper){
         
         if self.check_current_wallpaper_active(){
@@ -54,9 +58,6 @@ impl<'b> WallpaperHandler<'static>{
         *self.current_wallpaper = copy;
     }
 
-    pub fn run_current_wallpaper(& self){
-        *self.current_wallpaper.play();
-    }
 }
 
 fn main(){
