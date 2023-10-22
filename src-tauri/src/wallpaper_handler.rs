@@ -35,7 +35,7 @@ impl<'b> WallpaperHandler<'static>{
         self.current_wallpaper = &wallpaper;
     }
 
-    pub fn run_current_wallpaper(&mut self){
+    pub fn run_current_wallpaper(&self){
         self.current_wallpaper.play();
     }
 }
