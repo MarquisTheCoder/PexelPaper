@@ -33,8 +33,8 @@ impl<'b> WallpaperHandler<'static>{
             self.kill_current_wallpaper();
         };
         let copy = Wallpaper{
-           wallpaper_path: wallpaper.wallpaper_path,
-           wallpaper_pid: wallpaper.wallpaper_pid 
+           wallpaper_path: wallpaper.get_wallpaper_path(),
+           wallpaper_pid: wallpaper.get_wallpaper_pid()
         };
         self.current_wallpaper = wallpaper;
     }
