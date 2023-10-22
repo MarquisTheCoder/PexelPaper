@@ -8,12 +8,14 @@ pub struct Wallpaper{
 }
 
 impl Wallpaper{
+
     pub fn new(path: &str) -> Self {
         Wallpaper {
             wallpaper_path: Some(path.to_string()),
             wallpaper_pid: None
         }
     }
+
     pub fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
     }
@@ -29,6 +31,7 @@ impl Wallpaper{
     pub fn set_wallpaper_pid(&mut self, pid: u32){
         self.wallpaper_pid = Some(pid);
     }
+    
     pub fn play_wallpaper(mut self){
 
         const vlc_executable = "/Applications/VLC.app/Contents/MacOS/VLC";
