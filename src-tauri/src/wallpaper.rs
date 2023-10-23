@@ -45,13 +45,12 @@ impl Wallpaper{
             Some(wallpaper_path) =>{
                 println!("making sure I'm getting the correct path: {}", wallpaper_path); 
                 
-                let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE);
-                    run_wallpaper_in_background.arg(VIDEO_WALLPAPER);
-                    run_wallpaper_in_background.arg(wallpaper_path);
-                    run_wallpaper_in_background.arg(NO_AUDIO);
-                    run_wallpaper_in_background.arg(LOOP_PLAYBACK);
-                    run_wallpaper_in_background.arg(NO_OSD);
-                    run_wallpaper_in_background
+                let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
+                    .arg(VIDEO_WALLPAPER)
+                    .arg(wallpaper_path)
+                    .arg(NO_AUDIO)
+                    .arg(LOOP_PLAYBACK)
+                    .arg(NO_OSD)
                     .spawn()
                     .expect("[-] Cannot run video in the background");
                 
