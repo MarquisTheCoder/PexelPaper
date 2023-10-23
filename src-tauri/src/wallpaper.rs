@@ -44,7 +44,7 @@ impl Wallpaper{
         match self.get_wallpaper_path(){
             Some(wallpaper_path) =>{
                 println!("making sure I'm getting the correct path: {}", wallpaper_path); 
-                
+ 
                 let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
                     .arg(VIDEO_WALLPAPER)
                     .arg(wallpaper_path)
