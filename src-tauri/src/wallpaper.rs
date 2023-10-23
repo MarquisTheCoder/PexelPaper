@@ -86,7 +86,6 @@ impl Wallpaper{
 }
 
 fn main(){
-
     //test
     let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
     match wallpaper1.get_wallpaper_path(){
