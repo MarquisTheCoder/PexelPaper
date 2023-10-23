@@ -51,8 +51,9 @@ impl Wallpaper{
                     run_wallpaper_in_background.arg(NO_AUDIO);
                     run_wallpaper_in_background.arg(LOOP_PLAYBACK);
                     run_wallpaper_in_background.arg(NO_OSD);
-                    run_wallpaper_in_background.spawn();
-                    run_wallpaper_in_background.expect("[-] Cannot run video in the background");
+                    run_wallpaper_in_background
+                    .spawn()
+                    .expect("[-] Cannot run video in the background");
                 
                 //saving current vlc pid so we can close it and rerun it later
                 self.set_wallpaper_pid(run_wallpaper_in_background.id());
