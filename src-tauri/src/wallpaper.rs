@@ -12,7 +12,7 @@ impl Wallpaper{
 
     pub fn new(path: &str) -> Self {
         Wallpaper {
-            wallpaper_path: Some(path.to_string().clone()),
+            wallpaper_path: Some(path.to_string()),
             wallpaper_pid: None
         }
     }
@@ -42,9 +42,9 @@ impl Wallpaper{
         const LOOP_PLAYBACK: &str = "-L";
 
         match self.get_wallpaper_path(){
-            Some(wallpaper_path) =>{
-                println!("making sure I'm getting the correct path: {}", wallpaper_path); 
- 
+            Some(wallpaper_path) => {
+                println!("making sure I'm getting the correct path: {}", wallpaper_path);
+
                 let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
                     .arg(VIDEO_WALLPAPER)
                     .arg(wallpaper_path)
@@ -88,10 +88,12 @@ impl Wallpaper{
 fn main(){
     //test
     let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
+
     match wallpaper1.get_wallpaper_path(){
         Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
         None => println!("Wallpaper path is empty"),
     }
+
     println!("playing the wallpaper now");
    
     loop{

@@ -28,7 +28,7 @@ impl<'b> WallpaperHandler<'static>{
     }
 
     pub fn play_current_wallpaper(&mut self){
-        self.current_wallpaper.play();
+        Self::current_wallpaper.play();
     }
 
     pub fn set_current_wallpaper(&mut self, wallpaper: & mut Wallpaper){
