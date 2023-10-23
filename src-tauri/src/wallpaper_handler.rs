@@ -16,6 +16,17 @@ impl<'b> WallpaperHandler<'static>{
         }
     }
 
+    pub fn print_wallpaper(&self){
+        match self.current_wallpaper.get_wallpaper_path(){
+            Some(wallpaper_path) => {
+                println!("{}", wallpaper_path);
+            },
+            None => {
+                println!("Nothings happening");
+            }
+        }
+    }
+
     // fn check_current_wallpaper_active(&mut self) -> bool{
     //     match self.current_wallpaper.get_wallpaper_pid(){
     //         Some(_empty) => true,
