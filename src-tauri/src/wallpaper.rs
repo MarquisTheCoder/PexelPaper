@@ -12,7 +12,7 @@ impl Wallpaper{
 
     pub fn new(path: &str) -> Self {
         Wallpaper {
-            wallpaper_path: Some(path.to_string()),
+            wallpaper_path: Some(path.to_string().clone()),
             wallpaper_pid: None
         }
     }
