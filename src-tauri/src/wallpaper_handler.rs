@@ -28,7 +28,7 @@ impl<'b> WallpaperHandler<'static>{
     }
 
     pub fn play_current_wallpaper(&mut self){
-       let wallpaper: Wallpaper = self.current_wallpaper.clone();
+       let wallpaper: Wallpaper = *self.current_wallpaper.clone();
     }
 
     pub fn set_current_wallpaper(&mut self, wallpaper: & mut Wallpaper){
