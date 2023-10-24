@@ -8,9 +8,9 @@ pub struct WallpaperHandler<'a >{
     pub current_wallpaper: &'a mut Wallpaper,
 }
 
-impl<'b> WallpaperHandler<'static>{
+impl<'a> WallpaperHandler<'static>{
 
-    pub fn new(wallpaper: &'b mut Wallpaper) -> WallpaperHandler<'b>{
+    pub fn new(wallpaper: &'a mut Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
             current_wallpaper: wallpaper,
         }
@@ -72,7 +72,7 @@ impl<'b> WallpaperHandler<'static>{
 }
 
 fn main(){
-    let mut  _wallpaper:Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
+    let mut _wallpaper:Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
     let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(&mut _wallpaper);
     wallpaper_handler.print_wallpaper();
 }
