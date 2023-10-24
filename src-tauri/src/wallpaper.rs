@@ -101,7 +101,7 @@ fn main(){
 
     let mut wallpaper2: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
 
-    println!("{}", wallpaper1.equals(wallpaper2));
+    println!("{}", wallpaper1.equals(&wallpaper2));
     
     // match wallpaper1.get_wallpaper_path(){
     //     Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
