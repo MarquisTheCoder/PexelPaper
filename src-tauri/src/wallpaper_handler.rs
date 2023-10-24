@@ -38,9 +38,9 @@ impl<'b> WallpaperHandler<'_>{
     //     self.current_wallpaper.kill();
     // }
 
-    // pub fn play_current_wallpaper(&mut self){
-    //    let wallpaper: Wallpaper = self.current_wallpaper;
-    // }
+    pub fn play_current_wallpaper(&mut self){
+       self.current_wallpaper.play()
+    }
 
     // pub fn set_current_wallpaper(&mut self, wallpaper: & mut Wallpaper){
         
@@ -75,5 +75,6 @@ fn main(){
     let mut _wallpaper:Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
     let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new(&mut _wallpaper);
     wallpaper_handler.print_wallpaper();
+    wallpaper_handler.play_current_wallpaper();
     println!("{}",  wallpaper_handler.check_current_wallpaper_active());
 }
