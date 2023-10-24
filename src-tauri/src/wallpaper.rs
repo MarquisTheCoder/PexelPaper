@@ -21,9 +21,9 @@ impl Wallpaper{
             let current_wallpaper_path: String = self.get_wallpaper_path().unwrap();
             let other_wallpaper_path: String = other.get_wallpaper_path().unwrap();
 
-            current_wallpaper_path == other_wallpaper_path
+            return current_wallpaper_path == other_wallpaper_path;
         }
-        false
+        return false;
        
 
     }
