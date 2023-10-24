@@ -99,18 +99,22 @@ fn main(){
     //test
     let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
 
-    match wallpaper1.get_wallpaper_path(){
-        Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
-        None => println!("Wallpaper path is empty"),
-    }
+    let mut wallpaper2: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
 
-    println!("playing the wallpaper now");
+    println!("{}", wallpaper1.equals(wallpaper2));
+    
+    // match wallpaper1.get_wallpaper_path(){
+    //     Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
+    //     None => println!("Wallpaper path is empty"),
+    // }
+
+    // println!("playing the wallpaper now");
    
-    loop{
-        wallpaper1.play();
-        let five_seconds = time::Duration::from_millis(10000);
-        println!("waiting five seconds");
-        thread::sleep(five_seconds);
-        wallpaper1.kill();
-    }
+    // loop{
+    //     wallpaper1.play();
+    //     let five_seconds = time::Duration::from_millis(10000);
+    //     println!("waiting five seconds");
+    //     thread::sleep(five_seconds);
+    //     wallpaper1.kill();
+    // }
 }
