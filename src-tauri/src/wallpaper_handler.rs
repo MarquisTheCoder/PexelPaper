@@ -73,7 +73,7 @@ impl<'b> WallpaperHandler<'_>{
 
 fn main(){
     let mut _wallpaper:Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
-    let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(&mut _wallpaper);
+    let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new(&mut _wallpaper);
     wallpaper_handler.print_wallpaper();
     println!("{}",  wallpaper_handler.check_current_wallpaper_active());
 }
