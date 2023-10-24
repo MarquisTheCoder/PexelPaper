@@ -74,5 +74,5 @@ impl<'b> WallpaperHandler<'static>{
 fn main(){
     let  _wallpaper: &mut Wallpaper = &mut Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
     let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(_wallpaper);
-    wallpaper_handler.print_wallpaper();
+    wallpaper_handler.print_wallpaper(_wallpaper);
 }
