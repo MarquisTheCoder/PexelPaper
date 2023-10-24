@@ -5,7 +5,7 @@ use wallpaper::Wallpaper;
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler<'a >{
-    pub current_wallpaper: mut &'a mut Wallpaper,
+    pub current_wallpaper: &'a mut Wallpaper,
 }
 
 impl<'b> WallpaperHandler<'_>{
