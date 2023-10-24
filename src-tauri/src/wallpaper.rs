@@ -16,7 +16,17 @@ impl Wallpaper{
             wallpaper_pid: None
         }
     }
+    pub equals(&self, other: &Wallpaper) -> bool{
+        if(self.get_wallpaper_path().is_some() && other.get_wallpaper_path().is_some()){
+            let current_wallpaper_path: String = self.get_wallpaper_path().unwrap();
+            let other_wallpaper_path: String = other.get_wallpaper_path().unwrap();
 
+            current_wallpaper_path == other_wallpaper_path
+        }
+        return false;
+       
+
+    }
     pub fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
     }
