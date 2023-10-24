@@ -5,14 +5,14 @@ use wallpaper::Wallpaper;
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler<'a >{
-    pub current_wallpaper: mut Option<Wallpaper>,
+    pub current_wallpaper: mut &'a mut Wallpaper,
 }
 
 impl<'b> WallpaperHandler<'_>{
-    static EMPTY_WALLPAPER: mut Wallpaper = Wallpaper::new("none");
-    pub fn new(wallpaper: &'b mut Wallpaper ) -> WallpaperHandler<'b>{
+
+    pub fn new(wallpaper: &'b mut Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
-            current_wallpaper: None,
+            current_wallpaper: wallpaper,
         }
     }
 
