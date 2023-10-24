@@ -9,7 +9,7 @@ pub struct WallpaperHandler<'a >{
 }
 
 impl<'b> WallpaperHandler<'_>{
-
+    static EMPTY_WALLPAPER: mut Wallpaper = Wallpaper::new("default");
     pub fn new(wallpaper: &'b mut Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
             current_wallpaper: wallpaper,
