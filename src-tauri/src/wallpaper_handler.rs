@@ -50,7 +50,7 @@ impl<'b> WallpaperHandler<'_>{
         if self.check_current_wallpaper_active(){
             self.kill_current_wallpaper();
         }
-        self.current_wallpaper = wallpaper.clone();
+        *self.current_wallpaper =  wallpaper.clone();
         self.play_current_wallpaper();
     }
 
