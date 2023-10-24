@@ -16,7 +16,7 @@ impl<'b> WallpaperHandler<'static>{
         }
     }
 
-    pub fn print_wallpaper(&self, wallpaper:  Wallpaper){
+    pub fn print_wallpaper(&self, wallpaper:&mut Wallpaper){
         match wallpaper.get_wallpaper_path(){
             Some(wallpaper_path) => {
                 println!("{}", wallpaper_path);
