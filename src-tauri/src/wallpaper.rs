@@ -68,7 +68,7 @@ impl Wallpaper{
                 self.set_wallpaper_pid(run_wallpaper_in_background.id());
             },
             None => {
-                println!("cannot display wallpaper");
+                println!("cannot display wallpaper")
             }
         }
 
@@ -96,7 +96,7 @@ impl Wallpaper{
 }
 
 fn main(){
-    
+
     //test
     let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
 

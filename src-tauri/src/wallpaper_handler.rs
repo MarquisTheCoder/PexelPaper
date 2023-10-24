@@ -20,7 +20,7 @@ impl<'b> WallpaperHandler<'_>{
     fn play_current_wallpaper(&mut self){
         self.current_wallpaper.play()
     }
-
+    
     // static EMPTY_WALLPAPER: Wallpaper = Wallpaper::new("default");
     pub fn new(wallpaper: &'b mut Wallpaper) -> WallpaperHandler<'b>{
         WallpaperHandler{
