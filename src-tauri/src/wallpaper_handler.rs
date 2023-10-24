@@ -27,12 +27,12 @@ impl<'b> WallpaperHandler<'_>{
         }
     }
 
-    // fn check_current_wallpaper_active(&mut self) -> bool{
-    //     match self.current_wallpaper.get_wallpaper_pid(){
-    //         Some(_empty) => true,
-    //         None => false
-    //     }
-    // }
+    fn check_current_wallpaper_active(&mut self) -> bool{
+        match self.current_wallpaper.get_wallpaper_pid(){
+            Some(_empty) => true,
+            None => false
+        }
+    }
 
     // fn kill_current_wallpaper(&mut self){
     //     self.current_wallpaper.kill();
@@ -75,4 +75,5 @@ fn main(){
     let mut _wallpaper:Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
     let wallpaper_handler: WallpaperHandler = WallpaperHandler::new(&mut _wallpaper);
     wallpaper_handler.print_wallpaper();
+    println!("{}",  wallpaper_handler.check_current_wallpaper_active());
 }
