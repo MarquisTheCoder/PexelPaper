@@ -100,7 +100,7 @@ fn main(){
     let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
 
     let mut wallpaper2: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.m4");
-
+    //testing equals
     println!("{}", wallpaper1.equals(&wallpaper2));
     
     // match wallpaper1.get_wallpaper_path(){
