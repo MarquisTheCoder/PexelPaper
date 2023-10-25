@@ -3,7 +3,6 @@
 </script>
 
 <div data-tauri-drag-region class="rounded-sm titlebar">
-
     <div role="button" tabindex="0" class="titlebar-button" id="titlebar-minimize" on:keypress on:click={() => appWindow.minimize()}>
         <img src="https://api.iconify.design/mdi:window-minimize.svg" alt="minimize" />
     </div>

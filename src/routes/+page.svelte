@@ -7,7 +7,10 @@
 
 <Titlebar/>
 <Window>
-    
+    <section>
+
+    </section>
+    <section></section>
 </Window>
 
 <style>
