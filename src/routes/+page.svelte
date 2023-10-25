@@ -7,8 +7,8 @@
 
 <Titlebar/>
 <Window>
-    <section>
-
+    <section id="path-selection">
+       <input/> 
     </section>
     <section></section>
 </Window>
@@ -17,5 +17,12 @@
     .hello{
         color: black;
         font-size: 10rem;
+    }
+    #path-selection{
+        height: 50px;
+        width: 100vw;
+        background-color: red;
+        display: flex;
+        flex-direction: row;
     }
 </style>
