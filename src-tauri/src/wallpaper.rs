@@ -26,7 +26,7 @@ impl Wallpaper{
         }
         return false;
     }
-    
+
     pub fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
     }
@@ -70,14 +70,11 @@ impl Wallpaper{
                 println!("cannot display wallpaper")
             }
         }
-
     }
 
     pub fn kill(&mut self){
-
         const KILL_COMMAND: &str = "kill";
         const FLAG_NINE: &str = "-9";
-
         match self.get_wallpaper_pid(){
             Some(wallpaper_pid) => {
                 Command::new(KILL_COMMAND)
