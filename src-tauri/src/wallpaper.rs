@@ -16,6 +16,7 @@ impl Wallpaper{
             wallpaper_pid: None
         }
     }
+
     pub fn equals(&self, other: &Wallpaper) -> bool{
         if self.get_wallpaper_path().is_some() && other.get_wallpaper_path().is_some() {
             let current_wallpaper_path: String = self.get_wallpaper_path().unwrap();
@@ -24,9 +25,8 @@ impl Wallpaper{
             return current_wallpaper_path == other_wallpaper_path;
         }
         return false;
-       
-
     }
+    
     pub fn get_wallpaper_path(&self) -> Option<String>{
         self.wallpaper_path.clone()
     }
@@ -44,7 +44,6 @@ impl Wallpaper{
     }
 
     pub fn play(&mut self){
-
         const VLC_EXECUTABLE: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
         const VIDEO_WALLPAPER: &str = "--video-wallpaper";
         const NO_AUDIO: &str = "--noaudio";
@@ -66,7 +65,6 @@ impl Wallpaper{
                 
                 //saving current vlc pid so we can close it and rerun it later
                 self.set_wallpaper_pid(run_wallpaper_in_background.id());
-
             },
             None => {
                 println!("cannot display wallpaper")
