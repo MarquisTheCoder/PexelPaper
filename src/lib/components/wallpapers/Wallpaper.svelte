@@ -8,8 +8,8 @@
 
 <style>
     div{
-        width: 20%;
-        height: 125px;
+        width: 45%;
+        height: 175px;
         background-color: #20212C;
         border-radius: 10px;
         cursor: pointer;
