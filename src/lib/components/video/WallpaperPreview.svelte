@@ -8,9 +8,9 @@
 
 <style>
     div{
-        width: 30%;
-        height: 200px;
-        background-color: #2d2c32;
+        width: 20%;
+        height: 125px;
+        background-color: #20212C;
         border-radius: 10px;
         cursor: pointer;
     }

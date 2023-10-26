@@ -22,7 +22,7 @@
   .titlebar {
     height: 30px;
     width: 100vw;
-    background: #00000022;
+    background: #1A1C25;
     user-select: none;
     display: flex;
     justify-content: flex-end;
