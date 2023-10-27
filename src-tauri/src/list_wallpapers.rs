@@ -13,13 +13,13 @@ pub fn list_wallpapers(folder_path_string: &str){
     ];
     let found_wallpapers: &mut Vec<String>;
 
-    let folder_path: &Path = Path::new(format!("{}",folder_path_string));
+    let folder_path: &Path = Path::new(folder_path_string);
     
     if metadata(&folder_path)?.is_dir(){
 
-        let paths: ReadDir = fs::read_dir(&folder_path);
+        let paths = fs::read_dir(&folder_path);
 
-        for path_results in paths{
+        for path_result in paths{
 
             let full_path: PathBuf = path_result?.path();
             let file_name: &OsStr = full_path.file_name().unwrap();
