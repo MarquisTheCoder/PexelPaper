@@ -21,7 +21,7 @@ pub fn list_wallpapers(folder_path_string: &str){
 
         for path_result in paths{
 
-            let full_path: PathBuf = path_result.expect("failed").path();
+            let full_path: PathBuf = path_result.unwrap().path();
             let file_name: &OsStr = full_path.file_name().unwrap();
             let file_name_str: &str = file_name.to_str().unwrap();
 
