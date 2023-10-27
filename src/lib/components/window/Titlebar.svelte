@@ -15,14 +15,19 @@
 </div>
 
 <style>
+  div{
+    z-index: 10;
+  }
+
   img{
     filter: invert(100%);
     opacity: 0.6;
   }
+
   .titlebar {
     height: 30px;
     width: 100vw;
-    background: #1A1C25;
+    background: transparent;
     user-select: none;
     display: flex;
     justify-content: flex-end;
@@ -32,18 +37,24 @@
     right: 0;
     display: flex;
     justify-content: flex-start;
-    border-radius: 10px 10px 0 0;
     border: 1px;
     border-color: white;
+    z-index: 2;
+    padding-left: 2px;
   }
+
 .titlebar-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   width: 30px;
   height: 30px;
+  z-index: 2;
+  border-radius: 100%;
 }
+
 .titlebar-button:hover {
-  background: #123335;
+  background: #14223c;
 }
+
 </style>

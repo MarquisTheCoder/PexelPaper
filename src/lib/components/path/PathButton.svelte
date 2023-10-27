@@ -3,7 +3,6 @@
     import {invoke} from "@tauri-apps/api/tauri";
     import {current_path} from "$lib/middleware/store.ts"
     
-   
     const readFileContents = async () =>{
         console.log("reading contents");
         try{
@@ -28,8 +27,10 @@
     button{
         border-radius: 10px;
         color: #ffffff99;
-        padding: 0 20px 0 20px;
-        background-color: #4375C9;
-        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #273857;
+        padding: 5px;
     }
 </style>

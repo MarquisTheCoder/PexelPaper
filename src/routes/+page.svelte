@@ -1,5 +1,5 @@
 <script>
-    // import { appWindow } from '@tauri-apps/api/window' 
+    // import { appWindow } from '@tauri-apps/api/window'
     import "../app.css";
     import Titlebar from "$lib/components/window/Titlebar.svelte"
     import Window from "$lib/components/window/Window.svelte"
@@ -8,11 +8,10 @@
     import Wallpaper from "$lib/components/wallpapers/Wallpaper.svelte"
 </script>
 
-<Titlebar/>
 <Window>
+    <Titlebar/>
     <PathSelection/>
     <WallpaperArea>
-        <Wallpaper/>
         <Wallpaper/>
         <Wallpaper/>
         <Wallpaper/>

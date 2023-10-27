@@ -16,7 +16,9 @@
         flex-direction: row;
         align-items: center;
         justify-content: start;
-        padding: 30px 30px 0 30px;
+        padding: 30px 30px;
         gap: 10px;
+        background: linear-gradient(to bottom, #1B1D2A, transparent);
+        backdrop-filter: blur(10px);
     }
 </style>
