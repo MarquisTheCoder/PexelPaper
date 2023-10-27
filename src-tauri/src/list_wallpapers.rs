@@ -15,13 +15,13 @@ pub fn list_wallpapers(folder_path_string: &str){
 
     let folder_path: &Path = Path::new(folder_path_string);
     
-    if metadata(&folder_path).is_dir(){
+    if metadata(&folder_path).expect("cannot open").is_dir(){
 
         let paths = fs::read_dir(&folder_path);
 
         for path_result in paths{
 
-            let full_path: PathBuf = path_result.path();
+            let full_path: PathBuf = path_result.expect("failed").path();
             let file_name: &OsStr = full_path.file_name().unwrap();
             let file_name_str: &str = file_name.to_str().unwrap();
 
