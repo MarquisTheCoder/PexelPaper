@@ -1,18 +1,19 @@
 <script>
     import {open} from "@tauri-apps/api/dialog";
     import {invoke} from "@tauri-apps/api/tauri";
-
-    async function log(inputString) {
-        await invoke('log', {inputString});
-    }
+    import {current_path} from "$lib/middleware/store.ts"
+    
+   
     const readFileContents = async () =>{
+        console.log("reading contents");
         try{
             const selectedPath = await open({
                 multiple: false,
                 title: "Open Wallpaper Folder",
                 directory: true,
             });
-            log(selectedPath);
+        
+            console.log(selectedPath);
         }catch(err){
             console.error(err);
         }
