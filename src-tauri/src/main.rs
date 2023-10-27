@@ -5,6 +5,10 @@
 fn log(input_string: &str){
   println!("{}",input_string);
 }
+#[tauri::command]
+fn current_user() ->{
+
+}
 
 fn main() {
   tauri::Builder::default()

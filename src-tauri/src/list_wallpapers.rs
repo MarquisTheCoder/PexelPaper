@@ -11,6 +11,7 @@ pub fn list_wallpapers(folder_path_string: &str){
         ".mp4",
         ".avif",
     ];
+    
     let found_wallpapers: &mut Vec<String>;
 
     let folder_path: &Path = Path::new(folder_path_string);
@@ -20,9 +21,10 @@ pub fn list_wallpapers(folder_path_string: &str){
         let paths = fs::read_dir(&folder_path);
 
         for path_result in paths{
-            let full_path: PathBuf = path_result?.path();
+            let full_path = path_result.as_path();
+            let path = path.to_str();
             let file_name: &OsStr = full_path.file_name().unwrap();
-            let file_name_str: &str = file_name.to_str().unwrap();
+            let file_name_str:  = file_name.to_str().unwrap();
         }
 
     }
