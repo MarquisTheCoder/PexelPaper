@@ -13,7 +13,7 @@ pub fn list_wallpapers(folder_path_string: &str){
     ];
     let found_wallpapers: &mut Vec<String>;
 
-    folder_path: &Path = Path::new(format!("{}",folder_path_string));
+    let folder_path: &Path = Path::new(format!("{}",folder_path_string));
     
     if metadata(&folder_path)?.is_dir(){
 
@@ -31,7 +31,8 @@ pub fn list_wallpapers(folder_path_string: &str){
         }
 
     }
+}
 
-
-
+fn main(){
+    list_wallpapers("/usr/local/codium/projects/PexelPaper/src-tauri/src");
 }
