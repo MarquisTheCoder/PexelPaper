@@ -1,7 +1,6 @@
 <script>
     import {open} from "@tauri-apps/api/dialog";
-    import {invoke} from "@tauri-apps/api/tauri";
-    import {current_path} from "$lib/middleware/store.ts"
+    import {current_path} from "$lib/middleware/store.js"
     
     const readFileContents = async () =>{
         console.log("reading contents");
