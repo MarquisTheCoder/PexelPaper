@@ -12,7 +12,21 @@
     <Titlebar/>
     <PathSelection/>
     <WallpaperArea>
-        <Wallpaper imagePath=""/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
     </WallpaperArea>
 </Window>
 

@@ -1,11 +1,11 @@
 
 <script>
     import Select from "$lib/components/wallpapers/Select.svelte";
-    export let imagePath = "";
+    export let src = "";
 </script>
 
 <div>
-    <img src="{imagePath}"/>
+    <img {src}>
     <Select/>
 </div>
 
@@ -16,14 +16,18 @@
         left:0;
         width: 100%;
         height: 100%;
+        border: none;
     }
+
     div{
         position: relative;
-        width: 240px;
-        height: 175px;
+        min-width: 30%;
+        height: 200px;
         background-color: #1a1e27;
+        border: none;
         border-radius: 5px;
         cursor: pointer;
         scrollbar-width: none;
+        overflow: hidden;
     }
 </style>

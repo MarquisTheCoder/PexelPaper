@@ -16,12 +16,14 @@
         gap: 20px;
         justify-content: center;
         align-items: center;
+        background-color: #00000011;
+        backdrop-filter: blur(10px);
         transition-property: opacity;
         transition-duration: 1.3s;
     }
 
     div:hover{
-        opacity: 0.9;
+        opacity: 1;
     }
 
     button{
