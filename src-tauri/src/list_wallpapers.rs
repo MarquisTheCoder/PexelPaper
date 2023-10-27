@@ -20,14 +20,9 @@ pub fn list_wallpapers(folder_path_string: &str){
         let paths = fs::read_dir(&folder_path);
 
         for path_result in paths{
-
-            let full_path: PathBuf = path_result.path();
+            let full_path: PathBuf = path_result?.path();
             let file_name: &OsStr = full_path.file_name().unwrap();
             let file_name_str: &str = file_name.to_str().unwrap();
-
-            // if !metadata(&full_path)?.is_dir(){
-                
-            // }
         }
 
     }
