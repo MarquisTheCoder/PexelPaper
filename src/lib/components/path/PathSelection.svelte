@@ -18,7 +18,7 @@
         justify-content: start;
         padding: 30px 30px;
         gap: 10px;
-        background: linear-gradient(to bottom, #1B1D2A, transparent);
+        background: linear-gradient(to bottom, #0e0f15, transparent);
         backdrop-filter: blur(10px);
     }
 </style>

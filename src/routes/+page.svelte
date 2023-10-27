@@ -12,15 +12,7 @@
     <Titlebar/>
     <PathSelection/>
     <WallpaperArea>
-        <Wallpaper/>
-        <Wallpaper/>
-        <Wallpaper/>
-        <Wallpaper/>
-        <Wallpaper/>
-        <Wallpaper/>
-        <Wallpaper/>
-        <Wallpaper/>
-        <Wallpaper/>
+        <Wallpaper imagePath=""/>
     </WallpaperArea>
 </Window>
 

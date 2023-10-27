@@ -58,14 +58,10 @@ impl<'b> WallpaperHandler<'_>{
 
 fn main(){
     let mut _wallpaper:Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
-    let mut wallpaper2: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4"); 
+     
     let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new(&mut _wallpaper);
     wallpaper_handler.print_current_wallpaper();
     wallpaper_handler.play_current_wallpaper();
 
-    let five_seconds = time::Duration::from_millis(15000);
-    println!("waiting five seconds");
-    thread::sleep(five_seconds);
-    wallpaper_handler.change_current_wallpaper(&mut wallpaper2);
     // println!("{}",  wallpaper_handler.check_current_wallpaper_active());
 }

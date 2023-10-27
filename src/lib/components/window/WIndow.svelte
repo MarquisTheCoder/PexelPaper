@@ -13,7 +13,7 @@
         top: 0;
         left: 0;
         z-index: -1;
-        background: radial-gradient(circle at center, #1d202d, #191a27);
+        background: radial-gradient(circle at center, #0e1018, #050508);
         backdrop-filter: blur(100px);
         border-radius: 10px;
     }

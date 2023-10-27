@@ -9,7 +9,7 @@
     }
 
     #wallpaper-area{
-        padding: 30px 30px;
+        padding: 10px 30px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
