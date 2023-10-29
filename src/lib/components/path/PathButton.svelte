@@ -1,6 +1,6 @@
 <script>
     import {open} from "@tauri-apps/api/dialog";
-    import {current_path} from "$lib/middleware/store.js"
+    import {current_path} from "$lib/middleware/store.ts"
     
     const readFileContents = async () =>{
         console.log("reading contents");
@@ -10,7 +10,9 @@
                 title: "Open Wallpaper Folder",
                 directory: true,
             });
-        
+            current_path.subscribe((previous_value) => {
+                console.log(previous_value);
+            })
             console.log(selectedPath);
         }catch(err){
             console.error(err);
