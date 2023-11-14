@@ -4,7 +4,7 @@
 </script>
 
 <div id="path-selection">
-    <PathButton/>
+    <!-- <PathButton/> -->
     <SearchInput/>
 </div>
 
@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         padding: 30px 30px;
         gap: 10px;
         background: linear-gradient(to bottom, #0e0f15, transparent);
