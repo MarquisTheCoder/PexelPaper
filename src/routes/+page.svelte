@@ -5,6 +5,7 @@
     import WallpaperArea from "$lib/components/wallpapers/WallpaperArea.svelte";
     import Titlebar from "$lib/components/window/Titlebar.svelte";
     import Window from "$lib/components/window/Window.svelte";
+    import { wallpaper_store } from "$lib/middleware/store";
     import "../app.css";
 </script>
 
@@ -12,12 +13,9 @@
     <Titlebar/>
     <PathSelection/>
     <WallpaperArea> 
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        
+        {#each $wallpaper_store as path}
+            <svelte:component this={Wallpaper} src={""} {path}/>
+        {/each}
     </WallpaperArea> 
 </Window>
 

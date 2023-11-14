@@ -1,10 +1,11 @@
 <script>
     import Select from "$lib/components/wallpapers/Select.svelte";
     export let src = "";
+    export let path = "";
 </script>
 
-<div>
-    <img {src} alt="wallpaper">
+<div data-wallpaper_path={path}>
+    <img {src} alt="{path}">
     <Select/>
 </div>
 

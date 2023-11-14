@@ -1,16 +1,18 @@
 <script>
+    import { wallpaper_store } from "$lib/middleware/store";
     import { open } from "@tauri-apps/api/dialog";
     import { readDir } from '@tauri-apps/api/fs';
-    
+
     let acceptableFileTypes = ['mp4', '3gp', 'avi', 'webm', 'm4v', 'mov'];
-    
+    const resetWallpaper = () => $wallpaper_store = [];
     const readFolderEntries = async (path) =>{
+        resetWallpaper();
         const entries = await readDir(path, {recursive: false});
 
         for (const entry of entries){
             let entryExtension = entry.path.split(".").pop();
             if(acceptableFileTypes.includes(entryExtension)){
-                console.log(`Acceptable Video Entry: ${entry.path}`);
+                $wallpaper_store = [...$wallpaper_store, entry.path];
             }
         }
     }
