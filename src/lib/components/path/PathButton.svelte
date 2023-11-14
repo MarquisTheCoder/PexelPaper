@@ -1,30 +1,53 @@
 <script>
-    import {open} from "@tauri-apps/api/dialog";
-    import {current_path} from "$lib/middleware/store.ts"
+
+    import { default_wallpaper_path, wallpaper_store } from "$lib/middleware/store";
+    import { open } from "@tauri-apps/api/dialog";
+    import { readDir } from '@tauri-apps/api/fs';
+
+    let acceptableFileTypes = ['mp4', '3gp', 'avi', 'webm', 'm4v', 'mov'];
+
     
-    const readFileContents = async () =>{
+    const resetWallpaper = () => $wallpaper_store = [];
+    const readFolderEntries = async (path) =>{
+        resetWallpaper();
+        const entries = await readDir(path, {recursive: false});
+
+        for (const entry of entries){
+            let entryExtension = entry.path.split(".").pop() || "";
+            if(acceptableFileTypes.includes(entryExtension)){
+                $wallpaper_store = [...$wallpaper_store, entry.path];
+            }
+        }
+    }
+    
+    const getFolderPath = async () =>{
         console.log("reading contents");
         try{
             const selectedPath = await open({
                 multiple: false,
                 title: "Open Wallpaper Folder",
                 directory: true,
-            });
-            current_path.subscribe((previous_value) => {
-                console.log(previous_value);
-            })
-            console.log(selectedPath);
+
+            }) || default_wallpaper_path;
+            console.log("selected")
+            await readFolderEntries(selectedPath);
+
         }catch(err){
             console.error(err);
         }
     }
 </script>
 
-<button tabindex="0" class="readFileContens" id="readFileContents" on:keypress on:click={() => readFileContents()}>
-    Path
+<button tabindex="0" class="readFileContens" id="readFileContents" on:keypress on:click={() => getFolderPath()}>
+    <img id="folder-icon" src="img/folder.svg" alt="search folder location"/>
 </button>
 
 <style>
+    #folder-icon{
+        filter: invert(100%) opacity(60%);
+        height: 20px;
+        margin: 2px 10px;
+    }
     button{
         border-radius: 10px;
         color: #ffffff99;

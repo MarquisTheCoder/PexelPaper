@@ -1,6 +1,6 @@
 <script>
-    import PathButton from "$lib/components/path/PathButton.svelte"
-    import SearchInput from "$lib/components/path/SearchInput.svelte"
+    import SearchInput from "$lib/components/path/SearchInput.svelte";
+    import PathButton from "./PathButton.svelte";
 </script>
 
 <div id="path-selection">
@@ -15,7 +15,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         padding: 30px 30px;
         gap: 10px;
         background: linear-gradient(to bottom, #0e0f15, transparent);
