@@ -28,16 +28,9 @@
         cursor: pointer;
         scrollbar-width: none;
         overflow: hidden;
-        
-            
-        
-
-      
 
         -webkit-box-shadow:0px 0px 28px 8px rgba(73,134,199,0.17);
--moz-box-shadow: 0px 0px 28px 8px rgba(73,134,199,0.17);
-box-shadow: 0px 0px 28px 8px rgba(73,134,199,0.17);
-
-
+        -moz-box-shadow: 0px 0px 28px 8px rgba(73,134,199,0.17);
+        box-shadow: 0px 0px 28px 8px rgba(73,134,199,0.17);
     }
 </style>
