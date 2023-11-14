@@ -4,7 +4,7 @@
 extern crate whoami;
 
 use whoami::username;
-
+use wallpaper_hander::WallpaperHandler;
 
 
 #[tauri::command]
@@ -12,7 +12,9 @@ fn current_user() -> String{
   return username();
 }
 
+f
 fn main() {
+
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![current_user])
     .run(tauri::generate_context!())
