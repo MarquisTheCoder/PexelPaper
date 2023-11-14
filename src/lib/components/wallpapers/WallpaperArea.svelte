@@ -1,6 +1,15 @@
+
+<script>
+   import { wallpaper_store } from "$lib/middleware/store";
+   import Wallpaper from "./Wallpaper.svelte";
+
+</script>
+
 <div id="wallpaper-area">
     <div id="wallpaper-container">
-        <slot/>
+        {#each $wallpaper_store as path}
+            <svelte:component this={Wallpaper} src={""} {path}/>
+        {/each}
     </div>
 </div>
 
