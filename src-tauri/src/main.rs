@@ -5,10 +5,7 @@ extern crate whoami;
 
 use whoami::username;
 
-#[tauri::command]
-fn folder_to_svelte_store(folder_path: String){
 
-}
 
 #[tauri::command]
 fn current_user() -> String{
@@ -17,6 +14,7 @@ fn current_user() -> String{
 
 fn main() {
   tauri::Builder::default()
+    .invoke_handler(tauri::generate_handler![current_user])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
