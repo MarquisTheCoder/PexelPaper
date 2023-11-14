@@ -9,14 +9,15 @@
 </script>
 
 <Window>
-    <Titlebar/>
+    <!-- <Titlebar/>
     <PathSelection/>
     <WallpaperArea>
         <Wallpaper src={"/img/example2.png"}/>
         <Wallpaper src={"/img/example2.png"}/>
         <Wallpaper src={"/img/example2.png"}/>
         <Wallpaper src={"/img/example2.png"}/>
+        <Wallpaper src={"/img/example2.png"}/>
         
-    </WallpaperArea>
+    </WallpaperArea> -->
 </Window>
 

@@ -4,7 +4,7 @@
 </script>
 
 <div>
-    <img {src}>
+    <img {src} alt="wallpaper">
     <Select/>
 </div>
 
