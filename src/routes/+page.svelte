@@ -7,8 +7,8 @@
 
 <Window>
     <Titlebar/>
-    <!-- <PathSelection/> -->
-    <!-- <WallpaperArea>
+    <!-- <PathSelection/>
+    <WallpaperArea>
         {#each $wallpaper_store as path}
             <svelte:component this={Wallpaper} src={""} {path}/>
         {/each}
