@@ -1,4 +1,3 @@
-
 <script>
     import Select from "$lib/components/wallpapers/Select.svelte";
     export let src = "";
@@ -21,7 +20,7 @@
 
     div{
         position: relative;
-        min-width: 30%;
+        min-width: 250px;
         height: 200px;
         background-color: #1a1e27;
         border: none;
@@ -29,5 +28,16 @@
         cursor: pointer;
         scrollbar-width: none;
         overflow: hidden;
+        
+            
+        
+
+      
+
+        -webkit-box-shadow:0px 0px 28px 8px rgba(73,134,199,0.17);
+-moz-box-shadow: 0px 0px 28px 8px rgba(73,134,199,0.17);
+box-shadow: 0px 0px 28px 8px rgba(73,134,199,0.17);
+
+
     }
 </style>

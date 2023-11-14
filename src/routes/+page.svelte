@@ -16,17 +16,7 @@
         <Wallpaper src={"/img/example2.png"}/>
         <Wallpaper src={"/img/example2.png"}/>
         <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
-        <Wallpaper src={"/img/example2.png"}/>
+        
     </WallpaperArea>
 </Window>
 

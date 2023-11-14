@@ -6,9 +6,10 @@ extern crate whoami;
 use whoami::username;
 
 #[tauri::command]
-fn log(input_string: &str){
-  println!("{}",input_string);
+fn folder_to_svelte_store(folder_path: String){
+
 }
+
 #[tauri::command]
 fn current_user() -> String{
   return username();

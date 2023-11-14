@@ -1,4 +1,3 @@
-
 <div id="wallpaper-area">
     <div id="wallpaper-container">
         <slot/>
@@ -10,21 +9,18 @@
         scrollbar-width: none;
     }
     #wallpaper-container{
-        max-width: 90%;
-        min-width: 90%;
+        min-width: 100%;
         min-height: 100%;
 
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        flex-basis: content;
-        justify-content: flex-start;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
 
-        gap: 25px;
+        gap: 50px;
         overflow-y: scroll;
         scrollbar-width: none;
         /* background-color: blue; */
-        flex-grow:0;
+
+        padding: 50px 50px;
     }
 
     #wallpaper-area{
@@ -35,6 +31,7 @@
         min-height: 100%;
         min-width: 100%;
         overflow-y: scroll;
+        padding-top: 25px;
         /* background-color: red; */
     }
 </style>
