@@ -1,11 +1,11 @@
 <script>
-    import PathButton from "$lib/components/path/PathButton.svelte"
-    import SearchInput from "$lib/components/path/SearchInput.svelte"
+    import SearchInput from "$lib/components/path/SearchInput.svelte";
+    import PathButton from "./PathButton.svelte";
 </script>
 
 <div id="path-selection">
-    <!-- <PathButton/> -->
-    <!-- <SearchInput/> -->
+    <PathButton/>
+    <SearchInput/>
 </div>
 
 <style>
