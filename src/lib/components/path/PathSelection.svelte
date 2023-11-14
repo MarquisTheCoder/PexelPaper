@@ -5,7 +5,7 @@
 
 <div id="path-selection">
     <!-- <PathButton/> -->
-    <SearchInput/>
+    <!-- <SearchInput/> -->
 </div>
 
 <style>
