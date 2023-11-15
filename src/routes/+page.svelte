@@ -7,6 +7,6 @@
 
 <Window>
     <Titlebar/>
-    <!-- <WallpaperArea/> -->
+    <WallpaperArea></WallpaperArea>
 </Window>
 

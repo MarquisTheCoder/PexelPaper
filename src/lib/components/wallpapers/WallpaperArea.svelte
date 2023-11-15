@@ -2,7 +2,7 @@
 <script>
    import { wallpaper_store } from "$lib/middleware/store";
    import Wallpaper from "./Wallpaper.svelte";
-
+   $wallpaper_store = ["ssf", 'sdfsf']
 </script>
 
 <div id="wallpaper-area">
