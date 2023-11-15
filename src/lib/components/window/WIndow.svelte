@@ -1,5 +1,5 @@
 
-<section id="window" class="bg-black">
+<section class="bg-black">
     <div id="background"></div>
     <slot/>
 </section>
