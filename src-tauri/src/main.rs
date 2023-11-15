@@ -5,15 +5,10 @@ extern crate whoami;
 
 use whoami::username;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> @{-1}
 #[tauri::command]
 fn current_user() -> String{
   return username();
 }
-
 
 fn main() {
 
