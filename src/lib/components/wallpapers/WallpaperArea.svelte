@@ -1,14 +1,14 @@
 
 <script>
-   import { wallpaper_store } from "$lib/middleware/store";
-   import Wallpaper from "./Wallpaper.svelte";
-   $wallpaper_store = ["ssf", 'sdfsf']
+    import { wallpaper_store } from "$lib/middleware/store";
+    import Wallpaper from "./Wallpaper.svelte";
+       //   $wallpaper_store = ["ssf", 'sdfsf']
 </script>
 
 <div id="wallpaper-area">
     <div id="wallpaper-container">
-        {#each $wallpaper_store as path}
-            <svelte:component this={Wallpaper} src={""} {path}/>
+        {#each $wallpaper_store as wallpaper}
+            <svelte:component this={Wallpaper} src={""} path={wallpaper.path}/>
         {/each}
     </div>
 </div>
