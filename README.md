@@ -1,4 +1,4 @@
-#PexelPaper Dynamic wallpaper app
+# PexelPaper Dynamic wallpaper app
 
 
 If you're seeing this, you've probably already done this step. Congrats!
