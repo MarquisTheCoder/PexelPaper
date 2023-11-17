@@ -1,5 +1,6 @@
 # PexelPaper Dynamic wallpaper app
 
+![image](https://github.com/MarquisTheCoder/PexelPaper/assets/104405433/b2bb2d95-d5e3-4039-8753-a967f3040692)
 
 If you're seeing this, you've probably already done this step. Congrats!
 
