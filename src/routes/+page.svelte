@@ -10,6 +10,6 @@
 <Window>
     <Titlebar/>
     <PathSelection/>
-    <WallpaperArea></WallpaperArea>
+    <WallpaperArea/>
 </Window>
 
