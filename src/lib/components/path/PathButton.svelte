@@ -11,7 +11,9 @@
     }
     
     const readFolderEntries = async (path: string) =>{
-        resetWallpaper();
+
+        try{
+            resetWallpaper();
         const entries = await readDir(path, {recursive: false});
 
         for (const entry of entries){
@@ -22,7 +24,11 @@
                     path: entry.path,
                     name: entry.name || "No Name",
                 }];
+                }
             }
+        }catch(error){
+            console.error("reading folder entries failed");
+
         }
     }
     
@@ -48,6 +54,9 @@
             getFolderPath()
                 .then(() => {
                     console.log("folders retrieved successfully");
+                })
+                .catch((error) => {
+                    console.error("folder retrieval failed");
                 })
         }}>
         
