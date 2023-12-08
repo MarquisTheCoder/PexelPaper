@@ -1,44 +1,56 @@
-<script>
+<script lang="ts">
 
-    import { default_wallpaper_path, wallpaper_store } from "$lib/middleware/store";
+    import { wallpaper_store } from "$lib/middleware/store";
     import { open } from "@tauri-apps/api/dialog";
     import { readDir } from '@tauri-apps/api/fs';
 
-    let acceptableFileTypes = ['mp4', '3gp', 'avi', 'webm', 'm4v', 'mov'];
-
+    let acceptedVideoFiles = ['mp4', '3gp', 'avi', 'webm', 'm4v', 'mov'];
+ 
+    const resetWallpaper = () =>{
+        $wallpaper_store = [{}];
+    }
     
-    const resetWallpaper = () => $wallpaper_store = [];
-    const readFolderEntries = async (path) =>{
+    const readFolderEntries = async (path: string) =>{
         resetWallpaper();
         const entries = await readDir(path, {recursive: false});
 
         for (const entry of entries){
-            let entryExtension = entry.path.split(".").pop() || "";
-            if(acceptableFileTypes.includes(entryExtension)){
-                $wallpaper_store = [...$wallpaper_store, entry.path];
+            let entryPath = entry.path;
+            let entryExtension = entryPath.split(".").pop() || "";
+            if(acceptedVideoFiles.includes(entryExtension)){
+                $wallpaper_store = [...$wallpaper_store, {
+                    path: entry.path,
+                    name: entry.name || "No Name",
+                }];
             }
         }
     }
     
-    const getFolderPath = async () =>{
-        console.log("reading contents");
-        try{
+    const getFolderPath = async (): Promise<void> => {
+        return new Promise<void>((resolve, reject) =>   {
             const selectedPath = await open({
                 multiple: false,
                 title: "Open Wallpaper Folder",
                 directory: true,
+            });
+            await readFolderEntries(String(selectedPath));
 
-            }) || default_wallpaper_path;
-            console.log("selected")
-            await readFolderEntries(selectedPath);
-
-        }catch(err){
-            console.error(err);
-        }
-    }
+            setTimeout(() => {
+            // Once the task is completed
+            // Resolve if successful or reject if there's an error
+                resolve(); // If there is no value to return
+            // reject(new Error('Some error occurred')); // If there's an error
+            }, 1000);
+        });
 </script>
 
-<button tabindex="0" class="readFileContens" id="readFileContents" on:keypress on:click={() => getFolderPath()}>
+    <button tabindex="0" class="readFileContens" id="readFileContents" on:keypress on:click={() => {
+            getFolderPath()
+                .then(() => {
+                    console.log("folders retrieved successfully");
+                })
+        }}>
+        
     <img id="folder-icon" src="img/folder.svg" alt="search folder location"/>
 </button>
 

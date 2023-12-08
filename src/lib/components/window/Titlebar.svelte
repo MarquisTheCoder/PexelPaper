@@ -1,17 +1,21 @@
 <script>
-      import { appWindow } from "@tauri-apps/api/window"
+      import { appWindow } from "@tauri-apps/api/window";
 </script>
 
 <div data-tauri-drag-region class="rounded-sm titlebar">
-    <div role="button" tabindex="0" class="titlebar-button" id="titlebar-minimize" on:keypress on:click={() => appWindow.minimize()}>
+  
+    <div role="button" tabindex="0" class="titlebar-button" id="titlebar-minimize" on:keypress on:click={async () => appWindow.minimize()}>
         <img src="https://api.iconify.design/mdi:window-minimize.svg" alt="minimize" />
     </div>
-    <div role="button" tabindex="0" class="h-10 titlebar-button" id="titlebar-maximize" on:keypress on:click={() => appWindow.toggleMaximize()}>
+    
+    <div role="button" tabindex="0" class="h-10 titlebar-button" id="titlebar-maximize" on:keypress on:click={async () => appWindow.toggleMaximize()}>
         <img src="https://api.iconify.design/mdi:window-maximize.svg" alt="maximize" />
     </div>
-    <div role="button" tabindex="0" class="titlebar-button" id="titlebar-close" on:keypress on:click={() => appWindow.close()}>
+    
+    <div role="button" tabindex="0" class="titlebar-button" id="titlebar-close" on:keypress on:click={async () => appWindow.close()}>
         <img src="https://api.iconify.design/mdi:close.svg" alt="close" />
     </div>
+    
 </div>
 
 <style>
