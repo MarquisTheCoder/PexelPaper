@@ -3,7 +3,7 @@
     import PathButton from "./PathButton.svelte";
 </script>
 
-<div id="path-selection">
+<div id="path-selection" class=>
     <PathButton/>
     <SearchInput/>
 </div>
