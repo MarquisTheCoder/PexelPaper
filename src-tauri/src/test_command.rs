@@ -1,14 +1,11 @@
-use std::process::{Command};
-
-
-
+use std::process::Command;
 
 fn main() {
-    const vlc_executable = "/Applications/VLC.app/Contents/MacOS/VLC";
+    const vlc_executable: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
     const video_wallpaper: &str = "--video-wallpaper";
     const no_osd: &str = "--no-osd";
     const loop_playback: &str = "-L";
-    let video_path: &str =  "";     
+    let video_path: &str =  "";
 
     let mut run_wallpaper_in_background = Command::new(vlc_executable)
         .arg(video_wallpaper)

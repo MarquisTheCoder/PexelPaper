@@ -1,3 +1,19 @@
+
+
+<script lang="ts">
+    export let wallpaper: string = "";
+
+
+    function playWallpaper(){
+       console.log("starting wallpaper");
+    }
+
+    function stopWallpaper(){
+        console.log("stopping wallpaper");
+    }
+    
+</script>
+
 <div>
     <button>Play</button>
     <button>Stop</button>

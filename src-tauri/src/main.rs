@@ -11,7 +11,6 @@ fn current_user() -> String{
 }
 
 fn main() {
-
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![current_user])
     .run(tauri::generate_context!())
