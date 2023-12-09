@@ -14,50 +14,42 @@
 
         try{
             resetWallpaper();
-        const entries = await readDir(path, {recursive: false});
+            const entries = await readDir(path, {recursive: false});
 
-        for (const entry of entries){
-            let entryPath = entry.path;
-            let entryExtension = entryPath.split(".").pop() || "";
-            if(acceptedVideoFiles.includes(entryExtension)){
-                $wallpaper_store = [...$wallpaper_store, {
-                    path: entry.path,
-                    name: entry.name || "No Name",
-                }];
-                }
+            for (const entry of entries){
+                let entryPath = entry.path;
+                let entryExtension = entryPath.split(".").pop() || "";
+                if(acceptedVideoFiles.includes(entryExtension)){
+                    $wallpaper_store = [...$wallpaper_store, {
+                        path: entry.path,
+                        name: entry.name || "No Name",
+                    }];
+                    }
             }
+            
         }catch(error){
-            console.error("reading folder entries failed");
-
+            console.error("reading folder entries failed", error.message);
         }
     }
     
     const getFolderPath = async (): Promise<void> => {
-        return new Promise<void>((resolve, reject) =>   {
+        try{
             const selectedPath = await open({
-                multiple: false,
-                title: "Open Wallpaper Folder",
-                directory: true,
-            });
-            await readFolderEntries(String(selectedPath));
-
-            setTimeout(() => {
-            // Once the task is completed
-            // Resolve if successful or reject if there's an error
-                resolve(); // If there is no value to return
-            // reject(new Error('Some error occurred')); // If there's an error
-            }, 1000);
-        });
+                    multiple: false,
+                    title: "Open Wallpaper Folder",
+                    directory: true,
+                });
+                await readFolderEntries(String(selectedPath))
+        }catch(error){
+            console.log("folder path retrieval failed", error.message);
+        }
+                
+    }
 </script>
 
     <button tabindex="0" class="readFileContens" id="readFileContents" on:keypress on:click={() => {
-            getFolderPath()
-                .then(() => {
-                    console.log("folders retrieved successfully");
-                })
-                .catch((error) => {
-                    console.error("folder retrieval failed");
-                })
+            getFolderPath();
+                
         }}>
         
     <img id="folder-icon" src="img/folder.svg" alt="search folder location"/>
