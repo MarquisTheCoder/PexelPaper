@@ -1,19 +1,14 @@
 <script lang="ts">
-
-    import { wallpaper_store } from "$lib/middleware/store";
-    import { open } from "@tauri-apps/api/dialog";
     import { readDir } from '@tauri-apps/api/fs';
-
-    let acceptedVideoFiles = ['mp4', '3gp', 'avi', 'webm', 'm4v', 'mov'];
- 
-    async function resetWallpaper(){
-        $wallpaper_store = [{}];
-    }
-    
+    import { writable } from 'svelte/store';
+     $wallpaper_store = [];
+     
     async function readFolderEntries(path: string){
         
+        let acceptedVideoFiles = ['mp4', '3gp', 'avi', 'webm', 'm4v', 'mov'];
+
         try{
-            await resetWallpaper();
+            // $wallpaper_store = [];
             
             const entries = await readDir(path, {recursive: false});
             for (const entry of entries){
@@ -30,7 +25,7 @@
             console.error("reading folder entries failed", error.message);
         }
     }
-   
+
     async function getFolderPath(){
         try{
             const selectedPath = await open({
@@ -45,7 +40,7 @@
     }
 </script>
 
-<button id="readFileContents" on:keypress on:click={getFolderPath}>
+<button id="readFileContents">
     <img id="folder-icon" src="img/folder.svg" alt="search folder location"
     class="h-[20px]"/>
 </button>

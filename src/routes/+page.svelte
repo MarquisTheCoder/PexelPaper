@@ -1,4 +1,5 @@
 <script>
+	import PathButton from "$lib/components/path/PathButton.svelte";
 	import SearchInput from "$lib/components/path/SearchInput.svelte";
 	import Window from "$lib/components/window/Window.svelte";
 	import "../app.css";
@@ -6,7 +7,7 @@
 
 <Window>
     <div class="flex flex-row w-full">
-        <!-- <PathButton/> -->
+        <PathButton/>
         <SearchInput/>
     </div>
 </Window>
