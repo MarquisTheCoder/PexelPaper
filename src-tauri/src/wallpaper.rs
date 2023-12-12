@@ -50,7 +50,8 @@ impl Wallpaper{
         const NO_OSD: &str = "--no-osd";
         const LOOP_PLAYBACK: &str = "-L";
         const NO_GUI: &str = "--key-wallpaper";
-        const START_MINIMIZED:&str = "--qt-start-minimized";
+        const START_MINIMIZED:&str = "--no-qt-interface";
+        const QUIET: &str = "--quiet";
         const RUN_IN_BG: &str = "&";
         match self.get_wallpaper_path(){
             Some(wallpaper_path) => {
