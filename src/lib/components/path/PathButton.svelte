@@ -1,7 +1,12 @@
 <script lang="ts">
+    import { open } from "@tauri-apps/api/dialog";
     import { readDir } from '@tauri-apps/api/fs';
     import { writable } from 'svelte/store';
-     $wallpaper_store = [];
+
+    export const wallpaper_store = writable([]);
+
+    import { wallpaper_store } from '$lib/middleware/store';
+    $wallpaper_store = [];
      
     async function readFolderEntries(path: string){
         
@@ -16,7 +21,7 @@
                 let entryExtension = entryPath.split(".").pop() || "";
                 if(acceptedVideoFiles.includes(entryExtension)){
                     $wallpaper_store = [...$wallpaper_store, {
-                        path: entry.path,
+                        path: entry.path || "",
                         name: entry.name || "No Name",
                     }];
                     }
