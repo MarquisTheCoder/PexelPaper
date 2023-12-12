@@ -5,7 +5,7 @@
 </script>
 
 <div data-wallpaper_path={path}>
-    <img {src} alt="{path}">
+    <!-- <img {src} alt="{path}"> -->
     <Select/>
 </div>
 
