@@ -48,7 +48,7 @@ impl WallpaperHandler{
 
 fn main(){
     
-    let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new("/Users/coder/Movies/peaceful_vroom.m4");
+    let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new("/Users/coder/Movies/testWallpaper.mp4");
     wallpaper_handler.play_current_wallpaper();
 
     // println!("{}",  wallpaper_handler.check_current_wallpaper_active());
