@@ -1,11 +1,13 @@
 <script>
-    import Window from "$lib/components/window/Window.svelte";
-    import "../app.css";
+	import SearchInput from "$lib/components/path/SearchInput.svelte";
+	import Window from "$lib/components/window/Window.svelte";
+	import "../app.css";
 </script>
 
 <Window>
-    <!-- <Titlebar/> -->
-    <!-- <PathSelection/> -->
-    <!-- <WallpaperArea/> -->
+    <div class="flex flex-row w-full">
+        <!-- <PathButton/> -->
+        <SearchInput/>
+    </div>
 </Window>
 

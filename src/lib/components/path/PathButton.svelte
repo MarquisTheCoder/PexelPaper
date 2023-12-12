@@ -6,16 +6,16 @@
 
     let acceptedVideoFiles = ['mp4', '3gp', 'avi', 'webm', 'm4v', 'mov'];
  
-    const resetWallpaper = () =>{
+    async function resetWallpaper(){
         $wallpaper_store = [{}];
     }
     
-    const readFolderEntries = async (path: string) =>{
-
+    async function readFolderEntries(path: string){
+        
         try{
-            resetWallpaper();
+            await resetWallpaper();
+            
             const entries = await readDir(path, {recursive: false});
-
             for (const entry of entries){
                 let entryPath = entry.path;
                 let entryExtension = entryPath.split(".").pop() || "";
@@ -26,13 +26,13 @@
                     }];
                     }
             }
-            
-        }catch(error){
+
+        }catch(err){
             console.error("reading folder entries failed", error.message);
         }
     }
-    
-    const getFolderPath = async (): Promise<void> => {
+   
+    async function getFolderPath(){
         try{
             const selectedPath = await open({
                     multiple: false,
@@ -40,27 +40,18 @@
                     directory: true,
                 });
                 await readFolderEntries(String(selectedPath))
-        }catch(error){
-            console.log("folder path retrieval failed", error.message);
+        }catch(err){
+            console.error("folder path retrieval failed", err.message);
         }
-                
     }
 </script>
 
-    <button tabindex="0" class="readFileContens" id="readFileContents" on:keypress on:click={() => {
-            getFolderPath();
-                
-        }}>
-        
-    <img id="folder-icon" src="img/folder.svg" alt="search folder location"/>
+<button id="readFileContents" on:keypress on:click={getFolderPath}>
+    <img id="folder-icon" src="img/folder.svg" alt="search folder location"
+    class="h-[20px]"/>
 </button>
 
 <style>
-    #folder-icon{
-        filter: invert(100%) opacity(60%);
-        height: 20px;
-        margin: 2px 10px;
-    }
     button{
         border-radius: 10px;
         color: #ffffff99;
