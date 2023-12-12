@@ -22,7 +22,7 @@ impl WallpaperHandler{
         self.current_wallpaper.play()
     }
     
-    pub fn new(wallpaper: &'b str) -> WallpaperHandler<'b> {
+    pub fn new(wallpaper: & str) -> WallpaperHandler<> {
         let _wallpaper = Box::new(Wallpaper::new(wallpaper));    
         WallpaperHandler {
             current_wallpaper: _wallpaper, // Assigns a mutable reference to current_wallpaper
