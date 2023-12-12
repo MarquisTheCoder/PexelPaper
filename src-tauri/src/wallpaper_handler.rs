@@ -24,9 +24,9 @@ impl<'b> WallpaperHandler<'_>{
     
     // static EMPTY_WALLPAPER: Wallpaper = Wallpaper::new("default");
     pub fn new(wallpaper: &'b String) -> WallpaperHandler<'b>{
-        let mut _wallpaper:Wallpaper = Wallpaper::new(Wallpaper::new(wallpaper));
+        let mut _wallpaper:Wallpaper = Wallpaper::new(wallpaper);
         WallpaperHandler{
-            current_wallpaper: _wallpaper.clone(),
+            current_wallpaper: _wallpaper.clone,
         }
     }
 
