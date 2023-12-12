@@ -26,7 +26,6 @@
                     }];
                     }
             }
-
         }catch(err){
             console.error("reading folder entries failed", error.message);
         }
