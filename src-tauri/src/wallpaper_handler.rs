@@ -26,7 +26,7 @@ impl<'b> WallpaperHandler<'_>{
     pub fn new(wallpaper: &'b String) -> WallpaperHandler<'b>{
         let mut _wallpaper:Wallpaper = Wallpaper::new(wallpaper);
         WallpaperHandler{
-            current_wallpaper: _wallpaper.clone(),
+            current_wallpaper: _wallpaper,
         }
     }
 
@@ -59,7 +59,7 @@ impl<'b> WallpaperHandler<'_>{
 
 fn main(){
     
-    let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new(&mut _wallpaper);
+    let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new("");
     wallpaper_handler.print_current_wallpaper();
     wallpaper_handler.play_current_wallpaper();
 
