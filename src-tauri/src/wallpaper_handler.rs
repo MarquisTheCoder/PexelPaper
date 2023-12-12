@@ -19,7 +19,7 @@ impl WallpaperHandler{
     }
 
     fn play_current_wallpaper(&mut self){
-        &*self.current_wallpaper.play();
+        *self.current_wallpaper.play();
     }
     
     pub fn new(wallpaper: & str) -> WallpaperHandler {
@@ -40,7 +40,7 @@ impl WallpaperHandler{
         if self.check_current_wallpaper_active(){
             self.kill_current_wallpaper();
         }
-        *self.current_wallpaper =  Box::new(_wallpaper.clone());
+        self.current_wallpaper =  Box::new(_wallpaper.clone());
         self.play_current_wallpaper();
     }
 }
