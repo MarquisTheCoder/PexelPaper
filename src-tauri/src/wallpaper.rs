@@ -60,14 +60,14 @@ impl Wallpaper{
 
                 let run_wallpaper_in_background = Command::new(MPV_EXECUTABLE)
                     .arg(wallpaper_path)
-                    // .arg(VIDEO_WALLPAPER)
-                    // .arg(NO_OSD)
+                    .arg(VIDEO_WALLPAPER)
+                    .arg(NO_OSD)
                     .arg(NO_AUDIO)
-                    // .arg(NO_CONFIG)
-                    // .arg(QUIET)
-                    // .arg(NO_INPUT_CURSOR)
-                    // .arg(NO_NATIVE_FS)
-                    // .arg(RUN_IN_BG)
+                    .arg(NO_CONFIG)
+                    .arg(QUIET)
+                    .arg(NO_INPUT_CURSOR)
+                    .arg(NO_NATIVE_FS)
+                    .arg(RUN_IN_BG)
                         .spawn()
                         .expect("[-] Cannot run video in the background");
                 
