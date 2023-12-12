@@ -44,14 +44,16 @@ impl Wallpaper{
     }
 
     pub fn play(&mut self){
-        const VLC_EXECUTABLE: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
+        // const VLC_EXECUTABLE: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
+        const NO_CONFIG: &str = "--no-config";
+        const NO_INPUT_CURSOS: &str = " --no-input-cursor";
+        const MPV_EXCUTABLE: &str = "mpv";
         const VIDEO_WALLPAPER: &str = "--video-wallpaper";
-        const NO_AUDIO: &str = "--noaudio";
-        const NO_OSD: &str = "--no-osd";
+        const NO_AUDIO: &str = "--no_audio";
+        const NO_OSD: &str = "--no-osd-bar";
         const LOOP_PLAYBACK: &str = "-L";
         const NO_GUI: &str = "--key-wallpaper";
-        const START_MINIMIZED:&str = "-Idummy";
-        const QUIET: &str = "--quiet";
+        const QUIET: &str = "--really-quiet";
         // const RUN_IN_BG: &str = "&";
         match self.get_wallpaper_path(){
             Some(wallpaper_path) => {
@@ -64,7 +66,6 @@ impl Wallpaper{
                     .arg(NO_AUDIO)
                     .arg(NO_GUI)
                     .arg(LOOP_PLAYBACK)
-                    .arg(START_MINIMIZED)
                     // .arg(RUN_IN_BG)
                         .spawn()
                         .expect("[-] Cannot run video in the background");
