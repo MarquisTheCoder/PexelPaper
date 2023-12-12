@@ -67,7 +67,7 @@ impl Wallpaper{
                     .arg(QUIET)
                     .arg(NO_INPUT_CURSOR)
                     .arg(NO_NATIVE_FS)
-                    .arg(RUN_IN_BG)
+                    // .arg(RUN_IN_BG)
                         .spawn()
                         .expect("[-] Cannot run video in the background");
                 
