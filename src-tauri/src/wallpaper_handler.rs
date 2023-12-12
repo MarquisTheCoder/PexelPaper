@@ -5,7 +5,7 @@ use std::{thread, time};
 use wallpaper::Wallpaper;
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
-pub struct WallpaperHandler<'a >{
+pub struct WallpaperHandler<>{
     pub current_wallpaper: Box<Wallpaper>,
 }
 
