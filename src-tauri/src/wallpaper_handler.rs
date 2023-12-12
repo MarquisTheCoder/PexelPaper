@@ -22,13 +22,15 @@ impl<'b> WallpaperHandler<'_>{
         self.current_wallpaper.play()
     }
     
-    // static EMPTY_WALLPAPER: Wallpaper = Wallpaper::new("default");
-    pub fn new(wallpaper: &'b str) -> WallpaperHandler<'b>{
-        let _wallpaper:Wallpaper = Wallpaper::new(wallpaper);
-        WallpaperHandler{
-            current_wallpaper: _wallpaper,
+    pub fn new(wallpaper: &'b str) -> WallpaperHandler<'b> {
+        let mut _wallpaper = Wallpaper::new(wallpaper); // Creates a new mutable wallpaper instance
+    
+        WallpaperHandler {
+            current_wallpaper: &mut _wallpaper, // Assigns a mutable reference to current_wallpaper
         }
     }
+    
+    
 
     //proud of it
     pub fn print_current_wallpaper(&self){
