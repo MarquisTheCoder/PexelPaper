@@ -1,13 +1,13 @@
 
-<script>
-    import { wallpaper_store } from "$lib/middleware/store";
+<script lang="ts">
     import Wallpaper from "./Wallpaper.svelte";
+    export let wallpapers: Object[] = [{}];
 </script>
 
-<div id="wallpaper-area">
-    <div id="wallpaper-container">
-        {#each $wallpaper_store as wallpaper}
-            <svelte:component this={Wallpaper} src={""} path={wallpaper.path}/>
+<div id="wallpaper-area" class="flex overflow-y-scroll flex-row justify-center p-6 min-w-full min-h-full">
+    <div id="wallpaper-container" class="min-w-full min-h-full gap-[30px] overflow-y-scroll p-5">
+        {#each wallpapers as wallpaper}
+            <svelte:component this={Wallpaper} path={wallpaper.path}/>
         {/each}
     </div>
 </div>
@@ -19,29 +19,13 @@
     }
 
     #wallpaper-container{
-        min-width: 100%;
-        min-height: 100%;
-
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-
-        gap: 50px;
-        overflow-y: scroll;
         scrollbar-width: none;
-        /* background-color: blue; */
-
-        padding: 50px 50px;
     }
 
     #wallpaper-area{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
         flex-basis: content;
-        min-height: 100%;
-        min-width: 100%;
-        overflow-y: scroll;
-        padding-top: 25px;
         /* background-color: red; */
     }
 </style>

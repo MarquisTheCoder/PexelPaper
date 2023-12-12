@@ -56,10 +56,10 @@ impl Wallpaper{
 
                 let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
                     .arg(VIDEO_WALLPAPER)
+                    .arg(NO_OSD)
                     .arg(wallpaper_path)
                     .arg(NO_AUDIO)
                     .arg(LOOP_PLAYBACK)
-                    .arg(NO_OSD)
                         .spawn()
                         .expect("[-] Cannot run video in the background");
                 
