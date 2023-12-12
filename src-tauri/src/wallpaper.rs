@@ -47,7 +47,7 @@ impl Wallpaper{
         // const VLC_EXECUTABLE: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
         const MPV_EXCUTABLE: &str = "mpv";
         const NO_CONFIG: &str = "--no-config";
-        const NO_INPUT_CURSOr: &str = " --no-input-cursor";
+        const NO_INPUT_CURSOR: &str = " --no-input-cursor";
         const VIDEO_WALLPAPER: &str = "--video-wallpaper";
         const NO_AUDIO: &str = "--no_audio";
         const NO_NATIVE_FS: &str = " --no-native-fs";
@@ -62,8 +62,10 @@ impl Wallpaper{
                     .arg(VIDEO_WALLPAPER)
                     .arg(NO_OSD)
                     .arg(NO_AUDIO)
-                    .arg(NO_GUI)
-                    .arg(LOOP_PLAYBACK)
+                    .arg(NO_CONFIG)
+                    .arg(QUIET)
+                    .arg(NO_INPUT_CURSOR)
+                    .arg(NO_NATIVE_FS)
                     .arg(wallpaper_path)
                     // .arg(RUN_IN_BG)
                         .spawn()
