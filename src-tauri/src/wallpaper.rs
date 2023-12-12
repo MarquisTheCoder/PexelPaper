@@ -49,7 +49,7 @@ impl Wallpaper{
         const NO_AUDIO: &str = "--noaudio";
         const NO_OSD: &str = "--no-osd";
         const LOOP_PLAYBACK: &str = "-L";
-        const DUMMY_INTERFACE: &str = "--intf dummy";
+        const DUMMY_INTERFACE: &str = "--intf rc";
 
         match self.get_wallpaper_path(){
             Some(wallpaper_path) => {
