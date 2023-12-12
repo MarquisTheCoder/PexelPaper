@@ -1,24 +1,15 @@
 <script lang="ts">
     import Select from "$lib/components/wallpapers/Select.svelte";
     export let path: string = "";
-    export let src: string = "";
 </script>
 
 <div data-wallpaper_path={path}>
     <!-- <img {src} alt="{path}"> -->
+    <p class="text-2xl text-white">{path}</p>
     <Select/>
 </div>
 
 <style>
-    img{
-        position: absolute;
-        top:0;
-        left:0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-
     div{
         position: relative;
         min-width: 250px;

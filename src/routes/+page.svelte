@@ -12,20 +12,19 @@
     let wallpapers: Object[] = [];
     
     async function readFolderEntries(path: string){
-        
+        wallpapers = []
         let acceptedVideoFiles = ['mp4', '3gp', 'avi', 'webm', 'm4v', 'mov'];
 
-        try {
-                        
+        try { 
             const entries = await readDir(path, {recursive: false});
     
             for (const entry of entries){
-                let entryPath = entry.path;
-                console.log(entryPath);
+                let entryPath = entry.path; 
                 let entryExtension = entryPath.split(".").pop() || "";
                 if(acceptedVideoFiles.includes(entryExtension)){
-                    wallpapers = [wallpapers, {
-                        path: entry.path || "",
+                    console.log(`entry path is: ${entryPath}`);
+                    wallpapers = [...wallpapers, {
+                        path: entryPath || "Undefined",
                         name: entry.name || "No Name",
                     }];
                     }
