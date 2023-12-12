@@ -49,6 +49,7 @@ impl Wallpaper{
         const NO_AUDIO: &str = "--noaudio";
         const NO_OSD: &str = "--no-osd";
         const LOOP_PLAYBACK: &str = "-L";
+        const NO_GUI: &str = "--enable-qt";
 
         match self.get_wallpaper_path(){
             Some(wallpaper_path) => {
@@ -59,6 +60,7 @@ impl Wallpaper{
                     .arg(NO_OSD)
                     .arg(wallpaper_path)
                     .arg(NO_AUDIO)
+                    .arg(NO_GUI)
                     .arg(LOOP_PLAYBACK)
                         .spawn()
                         .expect("[-] Cannot run video in the background");
