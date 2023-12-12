@@ -19,7 +19,7 @@ impl WallpaperHandler{
     }
 
     fn play_current_wallpaper(&mut self){
-       let current_wallpaper: &Wallpaper =  &*self.current_wallpaper;
+        let current_wallpaper: &Wallpaper =  &mut *self.current_wallpaper; 
        current_wallpaper.play();
     }
     
