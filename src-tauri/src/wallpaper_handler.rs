@@ -22,26 +22,13 @@ impl WallpaperHandler{
         self.current_wallpaper.play()
     }
     
-    pub fn new(wallpaper: & str) -> WallpaperHandler<> {
+    pub fn new(wallpaper: & str) -> WallpaperHandler {
         let _wallpaper = Box::new(Wallpaper::new(wallpaper));    
         WallpaperHandler {
             current_wallpaper: _wallpaper, // Assigns a mutable reference to current_wallpaper
         }
     }
-    
-    
-
-    //proud of it
-    pub fn print_current_wallpaper(&self){
-        match self.current_wallpaper.get_wallpaper_path(){
-            Some(wallpaper_path) => {
-                println!("{}", wallpaper_path);
-            },
-            None => {
-                println!("Nothings happening");
-            }
-        }
-    }
+     
 
     pub fn kill_current_wallpaper(&mut self){
         self.current_wallpaper.kill();
@@ -61,7 +48,6 @@ impl WallpaperHandler{
 fn main(){
     
     let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new("");
-    wallpaper_handler.print_current_wallpaper();
     wallpaper_handler.play_current_wallpaper();
 
     // println!("{}",  wallpaper_handler.check_current_wallpaper_active());
