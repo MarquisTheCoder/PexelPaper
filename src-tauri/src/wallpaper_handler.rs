@@ -6,7 +6,7 @@ use wallpaper::Wallpaper;
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
 pub struct WallpaperHandler<'a >{
-    pub current_wallpaper: &'a mut Wallpaper,
+    pub current_wallpaper: Box<Wallpaper>,
 }
 
 impl<'b> WallpaperHandler<'_>{
@@ -23,10 +23,9 @@ impl<'b> WallpaperHandler<'_>{
     }
     
     pub fn new(wallpaper: &'b str) -> WallpaperHandler<'b> {
-        let mut _wallpaper = Wallpaper::new(wallpaper); // Creates a new mutable wallpaper instance
-    
+        let _wallpaper = Box::new(Wallpaper::new(wallpaper));    
         WallpaperHandler {
-            current_wallpaper: &mut _wallpaper, // Assigns a mutable reference to current_wallpaper
+            current_wallpaper: _wallpaper, // Assigns a mutable reference to current_wallpaper
         }
     }
     
