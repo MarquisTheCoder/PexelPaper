@@ -45,7 +45,7 @@ impl Wallpaper{
 
     pub fn play(&mut self){
         // const VLC_EXECUTABLE: &str = "/Applications/VLC.app/Contents/MacOS/VLC";
-        const MPV_EXCUTABLE: &str = "mpv";
+        const MPV_EXECUTABLE: &str = "mpv";
         const NO_CONFIG: &str = "--no-config";
         const NO_INPUT_CURSOR: &str = " --no-input-cursor";
         const VIDEO_WALLPAPER: &str = "--video-wallpaper";
