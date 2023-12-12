@@ -5,11 +5,11 @@ use std::{thread, time};
 use wallpaper::Wallpaper;
 // I dont need to make this asynchronous I can just close and re run pids I over complicated the process
 
-pub struct WallpaperHandler<>{
-    pub current_wallpaper: Box<Wallpaper>,
+pub struct WallpaperHandler{
+    pub current_wallpaper:  Box<Wallpaper>,
 }
 
-impl<'b> WallpaperHandler<'_>{
+impl WallpaperHandler{
 
     fn check_current_wallpaper_active(&mut self) -> bool{
         match self.current_wallpaper.get_wallpaper_pid(){
