@@ -1,10 +1,11 @@
 
-
-
-
+<script>
+    import Titlebar from "./Titlebar.svelte";
+</script>
 
 <section class="bg-black">
     <div id="background"></div>
+    <Titlebar/>
     <slot/>
 </section>
 
@@ -32,6 +33,5 @@
         padding-top: 30px;
         z-index: 2;
         position: relative;
-        border-radius: 10px;
     }
 </style>

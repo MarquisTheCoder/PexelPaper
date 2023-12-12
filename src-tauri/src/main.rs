@@ -12,8 +12,6 @@ fn current_user() -> String{
 
 fn main() {
   tauri::Builder::default()
-    .plugin(tauri_plugin_os::init())
-     .plugin(tauri_plugin_window::init())
     .invoke_handler(tauri::generate_handler![current_user])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");

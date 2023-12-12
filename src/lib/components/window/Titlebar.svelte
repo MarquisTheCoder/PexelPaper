@@ -5,11 +5,12 @@
 <div data-tauri-drag-region class="rounded-sm titlebar">
   
     <div role="button" tabindex="0" class="titlebar-button" id="titlebar-minimize" on:keypress on:click={async () => appWindow.minimize()}>
-        <img src="https://api.iconify.design/mdi:window-minimize.svg" alt="minimize" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#fff" d="M20 14H4v-4h16"/></svg>
+        <!-- <img src="https://api.iconify.design/mdi:window-minimize.svg" alt="minimize" /> -->
     </div>
     
     <div role="button" tabindex="0" class="h-10 titlebar-button" id="titlebar-maximize" on:keypress on:click={async () => appWindow.toggleMaximize()}>
-        <img src="https://api.iconify.design/mdi:window-maximize.svg" alt="maximize" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#fff" d="M4 4h16v16H4zm2 4v10h12V8z"/></svg> 
     </div>
     
     <div role="button" tabindex="0" class="titlebar-button" id="titlebar-close" on:keypress on:click={async () => appWindow.close()}>
