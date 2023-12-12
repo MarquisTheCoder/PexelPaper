@@ -23,9 +23,10 @@ impl<'b> WallpaperHandler<'_>{
     }
     
     // static EMPTY_WALLPAPER: Wallpaper = Wallpaper::new("default");
-    pub fn new(wallpaper: &'b mut Wallpaper) -> WallpaperHandler<'b>{
+    pub fn new(wallpaper: &'b String) -> WallpaperHandler<'b>{
+        let mut _wallpaper:Wallpaper = Wallpaper::new(Wallpaper::new(wallpaper));
         WallpaperHandler{
-            current_wallpaper: wallpaper,
+            current_wallpaper: _wallpaper.clone(),
         }
     }
 
@@ -45,20 +46,19 @@ impl<'b> WallpaperHandler<'_>{
         self.current_wallpaper.kill();
     }
 
-    pub fn change_current_wallpaper(&mut self, wallpaper: & mut Wallpaper){
+    pub fn change_current_wallpaper(&mut self, wallpaper: &str){
         
+        let mut _wallpaper:Wallpaper = Wallpaper::new(Wallpaper::new(""));
         if self.check_current_wallpaper_active(){
             self.kill_current_wallpaper();
         }
-        *self.current_wallpaper =  wallpaper.clone();
+        *self.current_wallpaper =  _wallpaper.clone();
         self.play_current_wallpaper();
     }
-
 }
 
 fn main(){
-    let mut _wallpaper:Wallpaper = Wallpaper::new("/Users/coder/Movies/testWallpaper.mp4");
-     
+    
     let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new(&mut _wallpaper);
     wallpaper_handler.print_current_wallpaper();
     wallpaper_handler.play_current_wallpaper();
