@@ -52,7 +52,7 @@ impl Wallpaper{
         const NO_GUI: &str = "--key-wallpaper";
         const START_MINIMIZED:&str = "-Idummy";
         const QUIET: &str = "--quiet";
-        const RUN_IN_BG: &str = "&";
+        // const RUN_IN_BG: &str = "&";
         match self.get_wallpaper_path(){
             Some(wallpaper_path) => {
                 println!("making sure I'm getting the correct path: {}", wallpaper_path);
@@ -65,7 +65,7 @@ impl Wallpaper{
                     .arg(NO_GUI)
                     .arg(LOOP_PLAYBACK)
                     .arg(START_MINIMIZED)
-                    .arg(RUN_IN_BG)
+                    // .arg(RUN_IN_BG)
                         .spawn()
                         .expect("[-] Cannot run video in the background");
                 
