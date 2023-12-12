@@ -55,7 +55,7 @@ impl Wallpaper{
         const QUIET: &str = "--really-quiet";
         // const RUN_IN_BG: &str = "&";
         match self.get_wallpaper_path(){
-            Some(wallpaper_path) => {
+            Some(wallpaper_path) =>     {
                 println!("making sure I'm getting the correct path: {}", wallpaper_path);
 
                 let run_wallpaper_in_background = Command::new(MPV_EXECUTABLE)
@@ -63,10 +63,10 @@ impl Wallpaper{
                     .arg(VIDEO_WALLPAPER)
                     .arg(NO_OSD)
                     .arg(NO_AUDIO)
-                    .arg(NO_CONFIG)
-                    .arg(QUIET)
-                    .arg(NO_INPUT_CURSOR)
-                    .arg(NO_NATIVE_FS)
+                    // .arg(NO_CONFIG)
+                    // .arg(QUIET)
+                    // .arg(NO_INPUT_CURSOR)
+                    // .arg(NO_NATIVE_FS)
                     // .arg(RUN_IN_BG)
                         .spawn()
                         .expect("[-] Cannot run video in the background");

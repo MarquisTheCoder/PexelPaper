@@ -58,7 +58,10 @@
 </section>
 
 <style>
-    
+    div{
+        scrollbar-width: none;
+    }
+ 
     #background{
         position: absolute;
         height: 100vh;

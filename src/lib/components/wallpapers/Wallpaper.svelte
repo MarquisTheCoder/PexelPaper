@@ -3,9 +3,8 @@
     export let path: string = "";
 </script>
 
-<div data-wallpaper_path={path}>
+<div data-wallpaper_path={path} class="mr-10">
     <!-- <img {src} alt="{path}"> -->
-    <p class="text-2xl text-white">{path}</p>
     <Select/>
 </div>
 
