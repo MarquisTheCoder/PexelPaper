@@ -49,7 +49,6 @@ impl Wallpaper{
         const NO_AUDIO: &str = "--noaudio";
         const NO_OSD: &str = "--no-osd";
         const LOOP_PLAYBACK: &str = "-L";
-        const DUMMY_INTERFACE: &str = "--intf rc";
 
         match self.get_wallpaper_path(){
             Some(wallpaper_path) => {
@@ -57,11 +56,10 @@ impl Wallpaper{
 
                 let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
                     .arg(VIDEO_WALLPAPER)
-                    .arg(DUMMY_INTERFACE)
+                    .arg(NO_OSD)
                     .arg(wallpaper_path)
                     .arg(NO_AUDIO)
                     .arg(LOOP_PLAYBACK)
-                    .arg(NO_OSD)
                         .spawn()
                         .expect("[-] Cannot run video in the background");
                 
