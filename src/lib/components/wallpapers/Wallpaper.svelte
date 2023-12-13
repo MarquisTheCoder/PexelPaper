@@ -1,6 +1,7 @@
 <script lang="ts">
     import Select from "$lib/components/wallpapers/Select.svelte";
     export let path: string = "";
+    
 </script>
 
 <div data-wallpaper_path={path} class="mr-10">
