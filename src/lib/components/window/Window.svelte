@@ -44,7 +44,6 @@
                 });
                 console.log(String(selectedPath));
                 await readFolderEntries(String(selectedPath))
-                await loadWallpapers([{}]);
         }catch(error){
             console.error("folder path retrieval failed", error.message);
         }
@@ -59,6 +58,10 @@
 
 <style>
     
+    div{
+        scrollbar-width: none;
+    }
+ 
     #background{
         position: absolute;
         height: 100vh;

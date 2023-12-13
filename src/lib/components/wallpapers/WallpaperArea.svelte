@@ -4,8 +4,9 @@
     export let wallpapers: Object[] = [{}];
 </script>
 
-<div id="wallpaper-area" class="flex overflow-y-scroll flex-row justify-center p-6 min-w-full min-h-full">
-    <div id="wallpaper-container" class="min-w-full min-h-full gap-[30px] overflow-y-scroll p-5">
+<div id="wallpaper-area" class="flex overflow-y-scroll flex-row justify-center min-w-full min-h-full">
+    <div id="wallpaper-container" class="overflow-y-scroll p-5 min-w-full min-h-full">
+
         {#each wallpapers as wallpaper}
             <svelte:component this={Wallpaper} path={wallpaper.path}/>
         {/each}

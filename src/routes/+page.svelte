@@ -50,8 +50,8 @@
 </script>
 
 <Window>
-    <div class="flex flex-col px-4 w-full h-full">
-        <div class="flex flex-row gap-5 px-10 py-6 w-full">
+    <div class="flex overflow-y-scroll flex-col px-4 w-full h-full">
+        <div class="flex flex-row gap-5 py-6 w-full">
             <PathButton on:click={getFolderPath}/>
             <SearchInput/>
         </div>
@@ -71,4 +71,8 @@
         background-color: #273857;
         padding: 5px;
     }
+    div{
+        scrollbar-width: none;
+    }
+
 </style>
