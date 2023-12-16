@@ -2,6 +2,9 @@
     import Select from "$lib/components/wallpapers/Select.svelte";
     export let path: string = "";
     
+    async function videoToImage(video: string){
+        
+    }
 </script>
 
 <div data-wallpaper_path={path} class="mr-10">

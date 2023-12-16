@@ -37,6 +37,7 @@
 		"@tauri-apps/api": "^1.4.0",
 		"@tauri-apps/plugin-os": "2.0.0-alpha.4",
 		"@tauri-apps/plugin-window": "2.0.0-alpha.1",
-		"@tauri-controls/svelte": "^0.2.0"
+		"@tauri-controls/svelte": "^0.2.0",
+		"ffmpeg": "^0.0.4"
 	}
 }
