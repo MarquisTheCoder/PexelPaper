@@ -7,6 +7,7 @@
 
 <div data-wallpaper_path={path} class="mr-10">
     <!-- <img {src} alt="{path}"> -->
+    <div class="absolute top-0 left-0 w-full h-full">{path}</div>
     <Select/>
 </div>
 
