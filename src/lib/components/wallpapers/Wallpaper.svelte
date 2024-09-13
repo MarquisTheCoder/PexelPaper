@@ -1,3 +1,5 @@
+
+
 <script lang="ts">
     import Select from "$lib/components/wallpapers/Select.svelte";
     export let path: string = "";
