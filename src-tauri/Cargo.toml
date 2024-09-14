@@ -15,6 +15,7 @@ rust-version = "1.72.1"
 tauri-build = { version = "1.4.0", features = [] }
 
 [dependencies]
+base64 = "0.13.0"
 vid2img = "0.1.0"
 walkdir = "2"
 whoami = "1.4.1"
