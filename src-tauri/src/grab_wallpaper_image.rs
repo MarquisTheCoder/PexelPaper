@@ -9,7 +9,7 @@ pub fn grab_wallpaper_image(wallpaper_video_path: &str) -> &'static str{
         .output()
         .expect("failed to grab image");
 
-    return raw_image_output;
+    return raw_image_output.stdout;
     
 }
 
