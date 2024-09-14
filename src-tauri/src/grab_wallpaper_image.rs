@@ -1,7 +1,6 @@
 
 use std::process::Command;
-use core::str::Utf8Error;
-
+use std::string::FromUtf8Error;
 
 
 /*ffmpeg -loglevel quiet -ss 26 -i 3196505-sd_960_540_30fps.mp4 -t 1  -f image2 - */
