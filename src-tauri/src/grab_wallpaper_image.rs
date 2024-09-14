@@ -15,5 +15,5 @@ pub fn grab_wallpaper_image(wallpaper_video_path: &str) -> Result<String, FromUt
 }
 
 fn main(){
-
+    let wallpaper_image_data = grab_wallpaper_image("/Users/coder/Wallpapers/3196505-sd_960_540_30fps.mp4");
 }
