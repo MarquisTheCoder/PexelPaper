@@ -10,10 +10,10 @@ pub fn grab_wallpaper_image(wallpaper_video_path: &str) -> Result<String, FromUt
         .output()
         .expect("failed to grab image");
 
-    return String::from_utf8(raw_image_output.stdout);
+    println!( raw_image_output.stdout);
     
 }
 
 fn main(){
-    let wallpaper_image_data = grab_wallpaper_image("/Users/coder/Wallpapers/3196505-sd_960_540_30fps.mp4");
+    grab_wallpaper_image("/Users/coder/Wallpapers/3196505-sd_960_540_30fps.mp4");
 }
