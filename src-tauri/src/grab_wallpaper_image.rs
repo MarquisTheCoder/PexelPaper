@@ -1,11 +1,10 @@
 
 
 
-use base64::encode;
 
 use std::process::Command;
 use std::string::FromUtf8Error;
-
+use base64::{engine::general_purpose, Engine as _};
 use std::io;
 
 /*ffmpeg -loglevel quiet -ss 26 -i 3196505-sd_960_540_30fps.mp4 -t 1  -f image2 - */
@@ -16,7 +15,7 @@ pub fn grab_wallpaper_image(wallpaper_video_path: &str) -> Result<String, FromUt
         .expect("failed to grab image");
 
      // Encode the binary image data as base64
-     let base64_image = base64::encode(raw_image_output.stdout);
+     let base64_image = general_purpose::STANDARD.encode(raw_image_output.stdout);
     
      // Return the base64-encoded string
      Ok(base64_image)
