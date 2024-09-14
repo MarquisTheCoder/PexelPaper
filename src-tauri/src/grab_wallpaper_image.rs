@@ -1,5 +1,4 @@
 
-extern crate base64;
 use base64::{encode, decode};
 
 use std::process::Command;
