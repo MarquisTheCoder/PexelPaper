@@ -1,7 +1,10 @@
 
+extern crate base64;
+use base64::{encode, decode};
+
 use std::process::Command;
 use std::string::FromUtf8Error;
-use base64;
+
 use std::io;
 
 /*ffmpeg -loglevel quiet -ss 26 -i 3196505-sd_960_540_30fps.mp4 -t 1  -f image2 - */
