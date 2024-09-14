@@ -1,8 +1,7 @@
 
 
 
-extern crate base64;
-use base64::{encode, decode};
+use base64::encode;
 
 use std::process::Command;
 use std::string::FromUtf8Error;
