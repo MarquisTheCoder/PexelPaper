@@ -1,16 +1,16 @@
 
-use std::path::Path;
-use ffmpeg_frame_grabber::{FFMpegVideo, FFMpegVideoOptions};
+use std::process::Command;
 
-pub fn grab_wallpaper_image(wallpaper_image_path: &str) -> &'static str{
 
-    let video = FFMpegVideo::open(
-        Path::new(&"./data/video.mp4"),
-        FFMpegVideoOptions::default().with_sampling_interval(Duration::from_secs(0x01)),
-    )
-    .unwrap();
+/*ffmpeg -loglevel quiet -ss 26 -i 3196505-sd_960_540_30fps.mp4 -t 1  -f image2 - */
+pub fn grab_wallpaper_image(wallpaper_video_path: &str) -> &'static str{
+    let raw_image_output = Command::new("ffmpeg")
+        .args(["-loglevel", "quiet", "-ss", "26", "-i", wallpaper_video_path, "-t", "1", "-f", "image2", "-"])
+        .output()
+        .expect("failed to grab image");
 
-    let frame = video[0].unwrap();
+    return raw_image_output;
+    
 }
 
 fn main(){
