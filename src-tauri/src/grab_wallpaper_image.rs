@@ -1,17 +1,16 @@
 
 use std::path::Path;
-use vid2img::FileSource;
+use ffmpeg_frame_grabber::{FFMpegVideo, FFMpegVideoOptions};
 
 pub fn grab_wallpaper_image(wallpaper_image_path: &str) -> &'static str{
-    let file_path = Path::new(wallpaper_image_path);
-    let frame_source = FileSource::new(file_path, (200, 200)).unwrap();
-    let png_img_data = frame_source.into_iter().next(); 
-    if Ok(Some(png_img_data)){
-       return "data succeeded";
-    }
 
-    return "data failed";
-    
+    let video = FFMpegVideo::open(
+        Path::new(&"./data/video.mp4"),
+        FFMpegVideoOptions::default().with_sampling_interval(Duration::from_secs(0x01)),
+    )
+    .unwrap();
+
+    let frame = video[0].unwrap();
 }
 
 fn main(){
