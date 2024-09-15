@@ -7,13 +7,16 @@
 
     export let path: string = "";
     
-    function path_to_raw_image_data(){
-        invoke('raw_data_to_base64', { wallpaper_video_path: path}); 
+    function path_to_raw_image_data(video_path: string){
+        let data = "error"
+        invoke('raw_data_to_base64', { wallpaper_video_path: video_path})
+        .then((data) => data = data)
+        return data 
     }
 </script>
 
 <div data-wallpaper_path={path} class="mr-10">
-    <!-- <img {src} alt="{path}"> -->
+     <p>{path_to_raw_image_data(path)}</p>
     <Select/>
 </div   >
 
