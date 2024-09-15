@@ -2,11 +2,11 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 extern crate whoami;
-extern crate base64;
+mod grab_wallpaper_image;
 
 use whoami::username;
+use grab_wallpaper_image::raw_data_to_base64;
 
-use base64::{encode};
 
 #[tauri::command]
 fn current_user() -> String{
@@ -14,10 +14,9 @@ fn current_user() -> String{
 }
 
 fn main() {
-  let data: Vec<u8> = vec![1,2,3,4,5];
-    println!("{}", encode(&data));
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![current_user])
+    .invoke_handler(tauri::generate_handler![raw_data_to_base64])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
