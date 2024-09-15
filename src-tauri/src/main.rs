@@ -2,6 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 extern crate whoami;
+extern crate base64;
 
 use whoami::username;
 
