@@ -2,14 +2,20 @@
 
 <script lang="ts">
     import Select from "$lib/components/wallpapers/Select.svelte";
+    // When using the Tauri API npm package:
+    import { invoke } from '@tauri-apps/api/tauri' 
+
     export let path: string = "";
+    
+    function path_to_raw_image_data(){
+        invoke('raw_data_to_base64', { wallpaper_video_path: path}); 
+    }
 </script>
 
 <div data-wallpaper_path={path} class="mr-10">
     <!-- <img {src} alt="{path}"> -->
-    <div class="absolute top-0 left-0 w-full h-full">{path}</div>
     <Select/>
-</div>
+</div   >
 
 <style>
     div{
