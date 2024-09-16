@@ -123,7 +123,9 @@ fn main(){
     //test
     let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Wallpapers/ele.mp4:w
 ");
-   wallpaper1.play(); 
+   wallpaper1.play();
+
+   wallpaper1.kill(); 
     //testing equals
     
 }

@@ -52,7 +52,7 @@ fn main(){
 
     wallpaper_handler.play_current_wallpaper();
     //
-        let five_seconds = time::Duration::from_millis(10000);
+        let five_seconds = time::Duration::from_millis(20000);
         println!("waiting five seconds");
         thread::sleep(five_seconds);
         wallpaper_handler.kill_current_wallpaper();
