@@ -71,23 +71,7 @@ impl Wallpaper{
                     .spawn()
                     .expect("[-] Cannot run video in the background");
 
-                let ps_output = Command::new("pgrep")
-                    .arg("-f")
-                    .arg("/Applications/VLC.app/Contents/MacOS/VLC")
-                    .output()
-                    .expect("Failed to execute ps");
-    
-                let ps_output_str = String::from_utf8(ps_output.stdout).expect("Failed to convert ps output to string");
-                
-                // Filter the output to find the correct VLC PID
-                for line in ps_output_str.lines() {
-                   
-                    let pid: u32 = line.trim().split_whitespace().next().unwrap().parse().unwrap();
-                    println!("Found VLC PID: {}", pid);
-                    self.set_wallpaper_pid(pid);
-                    
-    
-                } 
+               
                 //saving current vlc pid so we can close it and rerun it later
                 // self.set_wallpaper_pid(run_wallpaper_in_background.id());
             },
@@ -98,48 +82,48 @@ impl Wallpaper{
     }
 
     pub fn kill(&mut self){
-        const KILL_COMMAND: &str = "kill";
-        const FLAG_NINE: &str = "-9";
-        loop{
-        match self.get_wallpaper_pid(){
-            Some(wallpaper_pid) => {
+        // const KILL_COMMAND: &str = "kill";
+        // const FLAG_NINE: &str = "-9";
+        // loop{
+        // match self.get_wallpaper_pid(){
+        //     Some(wallpaper_pid) => {
 
-                Command::new(KILL_COMMAND)
-                    .arg(FLAG_NINE)
-                    .arg(format!("{}", wallpaper_pid))
-                        .spawn()
-                        .expect("Could not kill the current process");
-            },
-            None =>{
-                println!("wallpaper has no PID");
-            }
+        //         Command::new(KILL_COMMAND)
+        //             .arg(FLAG_NINE)
+        //             .arg(format!("{}", wallpaper_pid))
+        //                 .spawn()
+        //                 .expect("Could not kill the current process");
+        //     },
+        //     None =>{
+        //         println!("wallpaper has no PID");
+        //     }
+        // }
+        let ps_output = Command::new("pgrep")
+            .arg("-f")
+            .arg("/Applications/VLC.app/Contents/MacOS/VLC")
+            .output()
+            .expect("Failed to execute ps");
+        let ps_output_str = String::from_utf8(ps_output.stdout).expect("Failed to convert ps output to string");
+
+        for line in ps_output_str.lines() {
+       
+            let pid: u32 = line.trim().split_whitespace().next().unwrap().parse().unwrap();
+            println!("Found VLC PID: {}", pid);
+            self.set_wallpaper_pid(pid);
+            let kill_command = Command::new("kill")
+                .arg("-9")
+                .arg(format!("{}", pid))
+                .spawn()
+                .expect("could not kill process");
+            
         }
     }
-        
-    }
 }
-
 fn main(){
     //test
     let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Wallpapers/ele.mp4:w
 ");
-    
+   wallpaper1.play(); 
     //testing equals
-    println!("{}", wallpaper1.equals(&wallpaper2));
-    println!("{}", wallpaper1.get_wallpaper_path());
     
-    // match wallpaper1.get_wallpaper_path(){
-    //     Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
-    //     None => println!("Wallpaper path is empty"),
-    // }
-
-    // println!("playing the wallpaper now");
-   
-    // loop{
-    //     wallpaper1.play();
-    //     let five_seconds = time::Duration::from_millis(10000);
-    //     println!("waiting five seconds");
-    //     thread::sleep(five_seconds);
-    //     wallpaper1.kill();
-    // }
 }
