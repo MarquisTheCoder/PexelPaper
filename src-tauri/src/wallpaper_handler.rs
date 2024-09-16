@@ -30,7 +30,6 @@ impl WallpaperHandler{
         }
     }
      
-
     pub fn kill_current_wallpaper(&mut self){
         self.current_wallpaper.kill();
     }
