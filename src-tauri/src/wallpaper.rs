@@ -20,27 +20,21 @@ impl Wallpaper{
         // const NO_OSD: &str = "--no-osd-bar";
         const QUIET: &str = "--really-quiet";
         // const RUN_IN_BG: &str = "&";
-        match path(){
-            Some(wallpaper_path) =>     {
-                println!("making sure I'm getting the correct path: {}", wallpaper_path);
 
-                let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
-                    .arg(wallpaper_path)
-                    .arg(VIDEO_WALLPAPER)
+        let run_wallpaper_in_background = Command::new(VLC_EXECUTABLE)
+            .arg(path)
+            .arg(VIDEO_WALLPAPER)
                     // .arg(NO_OSD)
-                    .arg(NO_AUDIO)
+            .arg(NO_AUDIO)
                     // .arg(NO_CONFIG)
                     // .arg(QUIET)
                     // .arg(NO_INPUT_CURSOR)
                     // .arg(NO_NATIVE_FS)
                     // .arg(RUN_IN_BG)
-                    .spawn()
-                    .expect("[-] Cannot run video in the background");
-            },
-            None => {
-                println!("cannot display wallpaper")
-            }
-        }
+            .spawn()
+            .expect("[-] Cannot run video in the background");
+           
+        
     }
 
     pub fn kill(){
@@ -68,10 +62,11 @@ impl Wallpaper{
 
 fn main(){
   
-   wallpaper1.play("/Users/coder/Wallpapers/ele.mp4:w
-   ");
-
-   wallpaper1.kill(); 
+   Wallpaper::play("/Users/coder/Wallpapers/ele.mp4");
+   let five_seconds = time::Duration::from_millis(20000);
+   println!("waiting five seconds");
+   thread::sleep(five_seconds);
+   Wallpaper::kill(); 
     //testing equals
     
 }
