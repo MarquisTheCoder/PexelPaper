@@ -68,11 +68,28 @@ impl Wallpaper{
                     // .arg(NO_INPUT_CURSOR)
                     // .arg(NO_NATIVE_FS)
                     // .arg(RUN_IN_BG)
-                        .spawn()
-                        .expect("[-] Cannot run video in the background");
+                    .spawn()
+                    .expect("[-] Cannot run video in the background");
+
+                let ps_output = Command::new("pgrep")
+                    .arg("-f")
+                    .arg("/Applications/VLC.app/Contents/MacOS/VLC")
+                    .output()
+                    .expect("Failed to execute ps");
+    
+                let ps_output_str = String::from_utf8(ps_output.stdout).expect("Failed to convert ps output to string");
                 
+                // Filter the output to find the correct VLC PID
+                for line in ps_output_str.lines() {
+                   
+                    let pid: u32 = line.trim().split_whitespace().next().unwrap().parse().unwrap();
+                    println!("Found VLC PID: {}", pid);
+                    self.set_wallpaper_pid(pid);
+                    
+    
+                } 
                 //saving current vlc pid so we can close it and rerun it later
-                self.set_wallpaper_pid(run_wallpaper_in_background.id());
+                // self.set_wallpaper_pid(run_wallpaper_in_background.id());
             },
             None => {
                 println!("cannot display wallpaper")
@@ -86,6 +103,7 @@ impl Wallpaper{
         loop{
         match self.get_wallpaper_pid(){
             Some(wallpaper_pid) => {
+
                 Command::new(KILL_COMMAND)
                     .arg(FLAG_NINE)
                     .arg(format!("{}", wallpaper_pid))
@@ -103,10 +121,12 @@ impl Wallpaper{
 
 fn main(){
     //test
-    let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.mp4");
-    let mut wallpaper2: Wallpaper = Wallpaper::new("/Users/coder/Movies/peaceful_vroom.m4");
+    let mut wallpaper1: Wallpaper = Wallpaper::new("/Users/coder/Wallpapers/ele.mp4:w
+");
+    
     //testing equals
     println!("{}", wallpaper1.equals(&wallpaper2));
+    println!("{}", wallpaper1.get_wallpaper_path());
     
     // match wallpaper1.get_wallpaper_path(){
     //     Some(wallpaper_path) => println!("Wallpaper path is: {}", wallpaper_path),
