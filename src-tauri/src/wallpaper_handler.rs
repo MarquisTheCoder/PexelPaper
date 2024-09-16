@@ -1,4 +1,5 @@
 
+extern crate tauri;
 mod wallpaper;
 
 use std::{thread, time};
@@ -11,6 +12,12 @@ pub struct WallpaperHandler{
 
 impl WallpaperHandler{
 
+    pub fn new() -> Self {
+        WallpaperHandler {
+            current_wallpaper: None
+        }
+    }
+    
     fn check_current_wallpaper_active(&mut self) -> bool{
         match self.current_wallpaper.get_wallpaper_pid(){
             Some(_empty) => true,
@@ -18,18 +25,14 @@ impl WallpaperHandler{
         }
     }
 
+    
     fn play_current_wallpaper(&mut self){
+        
         let mut current_wallpaper: Wallpaper =  *self.current_wallpaper.clone();  
        current_wallpaper.play();
     }
     
-    pub fn new(wallpaper_path: & str) -> WallpaperHandler {
-        let _wallpaper = Box::new(Wallpaper::new(wallpaper_path));    
-        WallpaperHandler {
-            current_wallpaper: _wallpaper, // Assigns a mutable reference to current_wallpaper
-        }
-    }
-     
+    
     pub fn kill_current_wallpaper(&mut self){
         self.current_wallpaper.kill();
     }
@@ -41,14 +44,15 @@ impl WallpaperHandler{
             self.kill_current_wallpaper();
         }
         self.current_wallpaper =  Box::new(_wallpaper.clone());
+        self.kill_current_wallpaper();
         self.play_current_wallpaper();
     }
 }
 
 fn main(){
     
-    let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new("/Users/coder/Wallpapers/ele.mp4");
-
+    let mut wallpaper_handler: WallpaperHandler = WallpaperHandler::new();
+    
     wallpaper_handler.play_current_wallpaper();
     //
         let five_seconds = time::Duration::from_millis(20000);
